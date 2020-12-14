@@ -6,7 +6,7 @@
   <link href="https://ssspirit.github.io/atom.xml" rel="self"/>
   
   <link href="https://ssspirit.github.io/"/>
-  <updated>2020-12-13T13:41:08.842Z</updated>
+  <updated>2020-12-14T12:47:01.551Z</updated>
   <id>https://ssspirit.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>2019-2020 ICPC Northwestern European Regional Programming Contest (NWERC 2019) 补题</title>
+    <link href="https://ssspirit.github.io/2020/12/14/2019-2020-icpc-northwestern-european-regional-programming-contest-nwerc-2019-bu-ti/"/>
+    <id>https://ssspirit.github.io/2020/12/14/2019-2020-icpc-northwestern-european-regional-programming-contest-nwerc-2019-bu-ti/</id>
+    <published>2020-12-14T11:58:52.000Z</published>
+    <updated>2020-12-14T12:47:01.551Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;A-Average-Rank&quot;&gt;&lt;a href=&quot;#A-Average-Rank&quot; class=&quot;headerlink&quot; title=&quot;A - Average Rank&quot;&gt;&lt;/a&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="训练赛补题" scheme="https://ssspirit.github.io/categories/%E8%AE%AD%E7%BB%83%E8%B5%9B%E8%A1%A5%E9%A2%98/"/>
+    
+    
+    <category term="思维" scheme="https://ssspirit.github.io/tags/%E6%80%9D%E7%BB%B4/"/>
+    
+    <category term="延迟更新" scheme="https://ssspirit.github.io/tags/%E5%BB%B6%E8%BF%9F%E6%9B%B4%E6%96%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="https://ssspirit.github.io/2020/12/13/hello-world/"/>
     <id>https://ssspirit.github.io/2020/12/13/hello-world/</id>
-    <published>2020-12-13T04:04:06.390Z</published>
-    <updated>2020-12-13T13:41:08.842Z</updated>
+    <published>2020-12-13T09:57:36.000Z</published>
+    <updated>2020-12-14T12:48:39.171Z</updated>
     
     
       
@@ -34,6 +61,8 @@
     
     
     
+    
+    <category term="Hello World" scheme="https://ssspirit.github.io/tags/Hello-World/"/>
     
   </entry>
   

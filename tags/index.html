@@ -339,10 +339,61 @@
             </div>
             <div class="tag-chips">
                 
+                
+                <a href="/tags/%E6%80%9D%E7%BB%B4/" title="思维: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="思维" style="background-color: #F9EBEA;">思维
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E5%BB%B6%E8%BF%9F%E6%9B%B4%E6%96%B0/" title="延迟更新: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="延迟更新" style="background-color: #F5EEF8;">延迟更新
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/Hello-World/" title="Hello World: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="Hello World" style="background-color: #D5F5E3;">Hello World
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
             </div>
         </div>
     </div>
 </div>
+
+    
+    <link rel="stylesheet" type="text/css" href="/libs/jqcloud/jqcloud.css">
+<style type="text/css">
+    #tag-wordcloud {
+        width: 100%;
+        height: 300px;
+    }
+</style>
+
+<div class="container" data-aos="fade-up">
+    <div class="card">
+        <div id="tag-wordcloud" class="card-content"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/libs/jqcloud/jqcloud-1.0.4.min.js"></script>
+<script type="text/javascript">
+    
+
+    $('#tag-wordcloud').jQCloud([{"text":"思维","weight":1,"link":"/tags/思维/"},{"text":"延迟更新","weight":1,"link":"/tags/延迟更新/"},{"text":"Hello World","weight":1,"link":"/tags/Hello-World/"}], {
+        autoResize: true
+    });
+</script>
 
     
 
