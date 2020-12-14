@@ -6,7 +6,7 @@
   <link href="https://ssspirit.github.io/atom.xml" rel="self"/>
   
   <link href="https://ssspirit.github.io/"/>
-  <updated>2020-12-14T12:47:01.551Z</updated>
+  <updated>2020-12-14T14:24:34.495Z</updated>
   <id>https://ssspirit.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://ssspirit.github.io/2020/12/14/2019-2020-icpc-northwestern-european-regional-programming-contest-nwerc-2019-bu-ti/"/>
     <id>https://ssspirit.github.io/2020/12/14/2019-2020-icpc-northwestern-european-regional-programming-contest-nwerc-2019-bu-ti/</id>
     <published>2020-12-14T11:58:52.000Z</published>
-    <updated>2020-12-14T12:47:01.551Z</updated>
+    <updated>2020-12-14T14:24:34.495Z</updated>
     
     
       
@@ -40,6 +40,8 @@
     <category term="思维" scheme="https://ssspirit.github.io/tags/%E6%80%9D%E7%BB%B4/"/>
     
     <category term="延迟更新" scheme="https://ssspirit.github.io/tags/%E5%BB%B6%E8%BF%9F%E6%9B%B4%E6%96%B0/"/>
+    
+    <category term="组合数" scheme="https://ssspirit.github.io/tags/%E7%BB%84%E5%90%88%E6%95%B0/"/>
     
   </entry>
   
