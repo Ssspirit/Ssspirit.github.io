@@ -340,11 +340,11 @@
             <div class="tag-chips">
                 
                 
-                <a href="/tags/%E6%80%9D%E7%BB%B4/" title="思维: 1">
+                <a href="/tags/%E6%80%9D%E7%BB%B4/" title="思维: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="思维" style="background-color: #F9EBEA;">思维
-                        <span class="tag-length">1</span>
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -371,6 +371,42 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="组合数" style="background-color: #E8F8F5;">组合数
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E8%B4%AA%E5%BF%83/" title="贪心: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="贪心" style="background-color: #FEF9E7;">贪心
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E6%95%B0%E5%AD%A6/" title="数学: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="数学" style="background-color: #F8F9F9;">数学
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E5%87%A0%E4%BD%95/" title="几何: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="几何" style="background-color: #82E0AA;">几何
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E5%9B%BE%E8%AE%BA/" title="图论: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="图论" style="background-color: #D7BDE2;">图论
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -523,51 +559,51 @@
                                                                             
                                                                                 <span id="sitetime">载入运行时间...</span>
                                                                                 <script>
-                function siteTime() {
-                    var seconds = 1000;
-                    var minutes = seconds * 60;
-                    var hours = minutes * 60;
-                    var days = hours * 24;
-                    var years = days * 365;
-                    var today = new Date();
-                    var startYear = "2020";
-                    var startMonth = "12";
-                    var startDate = "13";
-                    var startHour = "21";
-                    var startMinute = "0";
-                    var startSecond = "0";
-                    var todayYear = today.getFullYear();
-                    var todayMonth = today.getMonth() + 1;
-                    var todayDate = today.getDate();
-                    var todayHour = today.getHours();
-                    var todayMinute = today.getMinutes();
-                    var todaySecond = today.getSeconds();
-                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                    var diff = t2 - t1;
-                    var diffYears = Math.floor(diff / years);
-                    var diffDays = Math.floor((diff / days) - diffYears * 365);
-                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                        minutes);
-                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                        diffMinutes * minutes) / seconds);
-                    if (startYear == todayYear) {
-                        document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
-                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    } else {
-                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    }
-                    /*
-                    document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                    document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                        " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    */
-                }
-                setInterval(siteTime, 1000);
+                                                                                    function siteTime() {
+                                                                                        var seconds = 1000;
+                                                                                        var minutes = seconds * 60;
+                                                                                        var hours = minutes * 60;
+                                                                                        var days = hours * 24;
+                                                                                        var years = days * 365;
+                                                                                        var today = new Date();
+                                                                                        var startYear = "2020";
+                                                                                        var startMonth = "12";
+                                                                                        var startDate = "13";
+                                                                                        var startHour = "21";
+                                                                                        var startMinute = "0";
+                                                                                        var startSecond = "0";
+                                                                                        var todayYear = today.getFullYear();
+                                                                                        var todayMonth = today.getMonth() + 1;
+                                                                                        var todayDate = today.getDate();
+                                                                                        var todayHour = today.getHours();
+                                                                                        var todayMinute = today.getMinutes();
+                                                                                        var todaySecond = today.getSeconds();
+                                                                                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                                                                                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                                                                                        var diff = t2 - t1;
+                                                                                        var diffYears = Math.floor(diff / years);
+                                                                                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                                                                                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                                                                                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                                                                                            minutes);
+                                                                                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                                                                                            diffMinutes * minutes) / seconds);
+                                                                                        if (startYear == todayYear) {
+                                                                                            document.getElementById("year").innerHTML = todayYear;
+                                                                                            document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                                                                                                " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                                                                                        } else {
+                                                                                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                                                                                            document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                                                                                                " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                                                                                        }
+                                                                                        /*
+                                                                                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                                                                                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                                                                                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                                                                                        */
+                                                                                    }
+                                                                                    setInterval(siteTime, 1000);
                                                                                 </script>
                                                                                 
                                                                                     <br>
@@ -611,8 +647,6 @@
 </footer>
 
 <div class="progress-bar"></div>
-
-
 
     <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">

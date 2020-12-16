@@ -343,7 +343,7 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">2</a></span>
+    <span class="count"><a href="/">3</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -357,7 +357,7 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">4</a></span>
+    <span class="count"><a href="/tags">8</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -373,7 +373,7 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">2</a></span>
+    <span class="count"><a href="/">3</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -387,7 +387,7 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">4</a></span>
+    <span class="count"><a href="/tags">8</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -531,7 +531,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,0,2],
+                data: [0,0,0,0,0,0,0,0,0,0,0,0,3],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -573,7 +573,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"训练赛补题","value":1}],
+                data: [{"name":"训练赛补题","value":2}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -597,7 +597,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["思维","延迟更新","Hello World","组合数"]
+                data: ["思维","延迟更新","Hello World","组合数","贪心","数学","几何","图论"]
             }
         ],
         yAxis: [
@@ -610,7 +610,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [1,1,1,1],
+                data: [2,1,1,1,1,1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -748,6 +748,30 @@
             
             <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0/">
                 <span class="chip center-align waves-effect waves-light chip-default">组合数</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E8%B4%AA%E5%BF%83/">
+                <span class="chip center-align waves-effect waves-light chip-default">贪心</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E6%95%B0%E5%AD%A6/">
+                <span class="chip center-align waves-effect waves-light chip-default">数学</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%87%A0%E4%BD%95/">
+                <span class="chip center-align waves-effect waves-light chip-default">几何</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%9B%BE%E8%AE%BA/">
+                <span class="chip center-align waves-effect waves-light chip-default">图论</span>
             </a>
             
             
@@ -908,51 +932,51 @@
                                                                             
                                                                                 <span id="sitetime">载入运行时间...</span>
                                                                                 <script>
-                function siteTime() {
-                    var seconds = 1000;
-                    var minutes = seconds * 60;
-                    var hours = minutes * 60;
-                    var days = hours * 24;
-                    var years = days * 365;
-                    var today = new Date();
-                    var startYear = "2020";
-                    var startMonth = "12";
-                    var startDate = "13";
-                    var startHour = "21";
-                    var startMinute = "0";
-                    var startSecond = "0";
-                    var todayYear = today.getFullYear();
-                    var todayMonth = today.getMonth() + 1;
-                    var todayDate = today.getDate();
-                    var todayHour = today.getHours();
-                    var todayMinute = today.getMinutes();
-                    var todaySecond = today.getSeconds();
-                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                    var diff = t2 - t1;
-                    var diffYears = Math.floor(diff / years);
-                    var diffDays = Math.floor((diff / days) - diffYears * 365);
-                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                        minutes);
-                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                        diffMinutes * minutes) / seconds);
-                    if (startYear == todayYear) {
-                        document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
-                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    } else {
-                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    }
-                    /*
-                    document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                    document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                        " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    */
-                }
-                setInterval(siteTime, 1000);
+                                                                                    function siteTime() {
+                                                                                        var seconds = 1000;
+                                                                                        var minutes = seconds * 60;
+                                                                                        var hours = minutes * 60;
+                                                                                        var days = hours * 24;
+                                                                                        var years = days * 365;
+                                                                                        var today = new Date();
+                                                                                        var startYear = "2020";
+                                                                                        var startMonth = "12";
+                                                                                        var startDate = "13";
+                                                                                        var startHour = "21";
+                                                                                        var startMinute = "0";
+                                                                                        var startSecond = "0";
+                                                                                        var todayYear = today.getFullYear();
+                                                                                        var todayMonth = today.getMonth() + 1;
+                                                                                        var todayDate = today.getDate();
+                                                                                        var todayHour = today.getHours();
+                                                                                        var todayMinute = today.getMinutes();
+                                                                                        var todaySecond = today.getSeconds();
+                                                                                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                                                                                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                                                                                        var diff = t2 - t1;
+                                                                                        var diffYears = Math.floor(diff / years);
+                                                                                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                                                                                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                                                                                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                                                                                            minutes);
+                                                                                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                                                                                            diffMinutes * minutes) / seconds);
+                                                                                        if (startYear == todayYear) {
+                                                                                            document.getElementById("year").innerHTML = todayYear;
+                                                                                            document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                                                                                                " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                                                                                        } else {
+                                                                                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                                                                                            document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                                                                                                " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                                                                                        }
+                                                                                        /*
+                                                                                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                                                                                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                                                                                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                                                                                        */
+                                                                                    }
+                                                                                    setInterval(siteTime, 1000);
                                                                                 </script>
                                                                                 
                                                                                     <br>
@@ -996,8 +1020,6 @@
 </footer>
 
 <div class="progress-bar"></div>
-
-
 
     <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
