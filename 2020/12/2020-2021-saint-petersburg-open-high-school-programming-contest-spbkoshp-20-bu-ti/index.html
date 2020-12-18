@@ -458,7 +458,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-12-16
+                    2020-12-18
                 </div>
                 
 
@@ -603,7 +603,7 @@ LL a<span class="token punctuation">[</span>N<span class="token punctuation">]</
 <h2 id="E-Flag-with-Stars"><a href="#E-Flag-with-Stars" class="headerlink" title="E - Flag with Stars"></a>E - Flag with Stars</h2><ul>
 <li><p>题意：给 $n$ 颗星星，做一面旗帜，要求上下两排星星数量的差距不能超过 $1$ ，而且如果你有两排的数量是有差异的，那么整张图每两排之间都必须遵循这个差异，即此时图必须是 长-短-长-短 或者 短-长-短-长 这样排列。问行数和每一排最多的星星数量差的绝对值最小为多少。</p>
 </li>
-<li><p>思路：设行数为 $a$ ，此时如果 $n % a == 0$ ，那么每一行星星的数量 $b = n / a$ ；如果 $n % a == a / 2 || n % a == (a + 1) / 2$ ，则最多单行星星数量 $b = a / 2 + 1$ 。显然最终的答案行数会在 $\sqrt{n}$ 左右，因此以 $\sqrt{n}$ 为中心左右开一个长度 $1e6$ 左右的区间，循环行数 $a$ 即可。</p>
+<li><p>思路：设行数为 $a$ ，此时如果 $n \bmod a = 0$ ，那么每一行星星的数量 $b = n / a$ ；如果 $n \bmod a = a / 2$ 或 $n \bmod a = (a + 1) / 2$ ，则最多单行星星数量 $b = a / 2 + 1$ 。显然最终的答案行数会在 $\sqrt{n}$ 左右，因此以 $\sqrt{n}$ 为中心左右开一个长度 $1e6$ 左右的区间，循环行数 $a$ 即可。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;algorithm></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bitset></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cmath></span></span>
