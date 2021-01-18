@@ -5,8 +5,8 @@
     
     <entry>
       <title>约数与欧拉函数</title>
-      <link href="2020/12/yue-shu-yu-ou-la-han-shu/"/>
-      <url>2020/12/yue-shu-yu-ou-la-han-shu/</url>
+      <link href="2021/1/yue-shu-yu-ou-la-han-shu/"/>
+      <url>2021/1/yue-shu-yu-ou-la-han-shu/</url>
       
         <content type="html"><![CDATA[<h2 id="约数"><a href="#约数" class="headerlink" title="约数"></a>约数</h2><ul><li>约数个数： $N = p_1^{c_1}·p_2^{c_2}……·p_k^{c_k}$ ，则 $f(N) = (c_1 + 1)·(c_2 + 1)……(c_k + 1)$ 。</li><li>$1 \sim N$ 的约数个数和为 $ \sum_{i = 1}^{N} f(i) = N·logN$ 。</li><li>$ 2e9 $ 内单个数字约数个数最多大约为 $ 1600 $ 个。</li></ul>]]></content>
       
