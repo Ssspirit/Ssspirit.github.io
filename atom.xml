@@ -6,7 +6,7 @@
   <link href="https://ssspirit.github.io/atom.xml" rel="self"/>
   
   <link href="https://ssspirit.github.io/"/>
-  <updated>2020-12-18T08:08:20.521Z</updated>
+  <updated>2020-12-21T11:16:47.397Z</updated>
   <id>https://ssspirit.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>约数与欧拉函数</title>
+    <link href="https://ssspirit.github.io/2020/12/yue-shu-yu-ou-la-han-shu/"/>
+    <id>https://ssspirit.github.io/2020/12/yue-shu-yu-ou-la-han-shu/</id>
+    <published>2020-12-21T11:03:58.000Z</published>
+    <updated>2020-12-21T11:16:47.397Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;约数&quot;&gt;&lt;a href=&quot;#约数&quot; class=&quot;headerlink&quot; title=&quot;约数&quot;&gt;&lt;/a&gt;约数&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;约数个数： $N = p_1^{c_1}·p_2^{c_2}……·p_k^{c_k}$ ，则 $f(N) = (c_1 +</summary>
+        
+      
+    
+    
+    
+    
+    <category term="数学" scheme="https://ssspirit.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="数论" scheme="https://ssspirit.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
+    
+    <category term="约数" scheme="https://ssspirit.github.io/tags/%E7%BA%A6%E6%95%B0/"/>
+    
+    <category term="欧拉函数" scheme="https://ssspirit.github.io/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>堆的实现</title>
