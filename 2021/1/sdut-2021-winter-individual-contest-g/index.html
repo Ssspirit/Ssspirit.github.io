@@ -492,7 +492,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><a target="_blank" rel="noopener" href="https://open.kattis.com/problem-sources/2019%20ICPC%20Mid-Central%20Regional">2019 ICPC Mid-Central Regional</a></p>
-<h1 id="A-Basketball-One-on-One"><a href="#A-Basketball-One-on-One" class="headerlink" title="A - Basketball One-on-One"></a><a target="_blank" rel="noopener" href="https://vjudge.net/problem/Kattis-basketballoneonone">A - Basketball One-on-One</a></h1><ul>
+<h2 id="A-Basketball-One-on-One"><a href="#A-Basketball-One-on-One" class="headerlink" title="A - Basketball One-on-One"></a><a target="_blank" rel="noopener" href="https://vjudge.net/problem/Kattis-basketballoneonone">A - Basketball One-on-One</a></h2><ul>
 <li><p>题意：$A$ $B$ 两人打球，得分在 $11$ 分及以上且领先对手两分即可获胜，按顺序给出得分情况，问胜者是谁。</p>
 </li>
 <li><p>思路：暴力统计判断谁大即可。</p>
@@ -529,7 +529,7 @@
 
 </li>
 </ul>
-<h1 id="C-Convoy"><a href="#C-Convoy" class="headerlink" title="C - Convoy"></a><a target="_blank" rel="noopener" href="https://vjudge.net/problem/Kattis-convoy">C - Convoy</a></h1><ul>
+<h2 id="C-Convoy"><a href="#C-Convoy" class="headerlink" title="C - Convoy"></a><a target="_blank" rel="noopener" href="https://vjudge.net/problem/Kattis-convoy">C - Convoy</a></h2><ul>
 <li><p>题意：共有 $n$ 个人要从相同地点到体育场，共有 $k$ 辆车。任何一个人都可以驾驶任意一辆车，除司机外每辆车还可以再载 $4$ 个人。每个人开车到达体育场的时间为 $t_i$ ，从体育场返回的时间与之相等。给出每个人的 $t_i$ ，求最少需要花费多少时间让 $n$ 个人都到达体育场？</p>
 </li>
 <li><p>思路：假设 $i$ 开车，一共发车了 $w_i$ 次，那么花费时间为 $(2w_i - 1) \cdot t_i$ ，可载人数为 $4w_i + 1$ 。同时注意到答案显然具有单调性，那么可以考虑用二分答案处理。 $check$ 的时候按照 $t_i$ 升序尝试让 $i$ 开车即可。</p>
@@ -583,7 +583,7 @@ LL <span class="token function">solve</span><span class="token punctuation">(</s
 
 </li>
 </ul>
-<h1 id="F-Dragon-Ball-I"><a href="#F-Dragon-Ball-I" class="headerlink" title="F - Dragon Ball I"></a><a target="_blank" rel="noopener" href="https://vjudge.net/problem/Kattis-dragonball1">F - Dragon Ball I</a></h1><ul>
+<h2 id="F-Dragon-Ball-I"><a href="#F-Dragon-Ball-I" class="headerlink" title="F - Dragon Ball I"></a><a target="_blank" rel="noopener" href="https://vjudge.net/problem/Kattis-dragonball1">F - Dragon Ball I</a></h2><ul>
 <li><p>题意：给出一张带权图和七颗龙珠所在的位置，你的初始位置是 $1$ 点，求收集七颗龙珠的最少花费，如果无法收集则输出 $-1$。</p>
 </li>
 <li><p>思路：先用 $dijkstra$ 求出带有龙珠的几个城市之间的最短路，然后从 $1$ 点开始 $dfs$ 即可，注意会爆 $int$ 。</p>
@@ -668,7 +668,7 @@ LL dist<span class="token punctuation">[</span><span class="token number">8</spa
 
 </li>
 </ul>
-<h1 id="H-Farming-Mars"><a href="#H-Farming-Mars" class="headerlink" title="H - Farming Mars"></a><a target="_blank" rel="noopener" href="https://vjudge.net/problem/Kattis-farmingmars">H - Farming Mars</a></h1><ul>
+<h2 id="H-Farming-Mars"><a href="#H-Farming-Mars" class="headerlink" title="H - Farming Mars"></a><a target="_blank" rel="noopener" href="https://vjudge.net/problem/Kattis-farmingmars">H - Farming Mars</a></h2><ul>
 <li><p>题意：给出一个序列，询问区间 $[l, r]$ 之间出现次数最多的一个数字出现次数是否大于等于 $(r - l + 1) / 2 + 1$ 。</p>
 </li>
 <li><p>思路：其实用数组开桶暴力就可以过了，但是做的时候错把 $1e7$ 级别的桶当成了 $1e8$ 级别的桶，以为不能这样做。折腾了半天想到的方法是：用 $map + vector$ 记录每个数字出现的位置，查询的时候按照出现次数降序查找每一个数字，利用二分查找快速检测该数字在指定区间内的出现次数。没想到居然只跑了 $10ms$ ……</p>
@@ -724,7 +724,7 @@ pair<span class="token operator">&lt;</span><span class="token keyword">int</spa
 
 </li>
 </ul>
-<h1 id="I-Soft-Passwords"><a href="#I-Soft-Passwords" class="headerlink" title="I - Soft Passwords"></a><a target="_blank" rel="noopener" href="https://vjudge.net/problem/Kattis-softpasswords">I - Soft Passwords</a></h1><ul>
+<h2 id="I-Soft-Passwords"><a href="#I-Soft-Passwords" class="headerlink" title="I - Soft Passwords"></a><a target="_blank" rel="noopener" href="https://vjudge.net/problem/Kattis-softpasswords">I - Soft Passwords</a></h2><ul>
 <li><p>题意：给出真实密码 $S$ 和输入密码 $P$ 。如果满足以下条件之一，就输出 $Yes$ ： $P$ 和 $S$ 相同；$P$ 在头部或者尾部添加一个数字后和 $S$ 相同；$P$ 中全部字母大小写翻转后和 $S$ 相同。</p>
 </li>
 <li><p>思路：暴力</p>
@@ -774,7 +774,7 @@ pair<span class="token operator">&lt;</span><span class="token keyword">int</spa
 
 </li>
 </ul>
-<h1 id="L-Umm-Code"><a href="#L-Umm-Code" class="headerlink" title="L - Umm Code"></a><a target="_blank" rel="noopener" href="https://vjudge.net/problem/Kattis-ummcode">L - Umm Code</a></h1><ul>
+<h2 id="L-Umm-Code"><a href="#L-Umm-Code" class="headerlink" title="L - Umm Code"></a><a target="_blank" rel="noopener" href="https://vjudge.net/problem/Kattis-ummcode">L - Umm Code</a></h2><ul>
 <li><p>题意：将一个字符串的 $ASCII$ 码的二进制形式用 $u$ 和 $m$ 代替后以多个单词的形式给出，含有其他字母或数字的单词直接忽视。</p>
 </li>
 <li><p>思路：暴力</p>
