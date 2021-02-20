@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Educational Codeforces Round 104, xrblog">
+    <meta name="keywords" content="计算几何基础知识, xrblog">
     <meta name="description" content="ACMer,算法蒟蒻">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Educational Codeforces Round 104 | xrblog</title>
+    <title>计算几何基础知识 | xrblog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -289,12 +289,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Educational Codeforces Round 104</h1>
+                    <h1 class="description center-align post-title">计算几何基础知识</h1>
                 </div>
             </div>
         </div>
@@ -408,9 +408,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%90%91%E9%87%8F/">
+                                <span class="chip bg-color">向量</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/">
+                                <span class="chip bg-color">计算几何</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%82%B9%E4%B8%8E%E7%9B%B4%E7%BA%BF/">
+                                <span class="chip bg-color">点与直线</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%A4%9A%E8%BE%B9%E5%BD%A2/">
+                                <span class="chip bg-color">多边形</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -418,8 +434,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Codeforces/" class="post-category">
-                                Codeforces
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="post-category">
+                                计算几何
                             </a>
                         
                     </div>
@@ -431,28 +447,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-16
+                    2021-02-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-16
+                    2021-02-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    7 分
                 </div>
                 
 
@@ -475,7 +491,192 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Educational-Codeforces-Round-104"><a href="#Educational-Codeforces-Round-104" class="headerlink" title="Educational Codeforces Round 104"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1487">Educational Codeforces Round 104</a></h1>
+                <h1 id="计算几何基础知识"><a href="#计算几何基础知识" class="headerlink" title="计算几何基础知识"></a>计算几何基础知识</h1><h2 id="一、前置知识点"><a href="#一、前置知识点" class="headerlink" title="一、前置知识点"></a>一、前置知识点</h2><ol>
+<li><p>$\pi = acos(-1.0)$ </p>
+</li>
+<li><p>余弦定理：$c^2 = a^2 + b^2 - 2abcos\theta$ </p>
+<p>正弦定理：$\frac{a}{sin\alpha} = \frac{b}{sin\beta} = \frac{c}{sin\theta}$ </p>
+</li>
+</ol>
+<h2 id="二、浮点数比较"><a href="#二、浮点数比较" class="headerlink" title="二、浮点数比较"></a>二、浮点数比较</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">double</span> eps <span class="token operator">=</span> <span class="token number">1e-8</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">sign</span><span class="token punctuation">(</span><span class="token keyword">double</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token comment">//符号函数</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">fabs</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">&lt;</span> eps<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">int</span> <span class="token function">cmp</span><span class="token punctuation">(</span><span class="token keyword">double</span> x<span class="token punctuation">,</span> <span class="token keyword">double</span> y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token comment">//比较函数</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">fabs</span><span class="token punctuation">(</span>x <span class="token operator">-</span> y<span class="token punctuation">)</span> <span class="token operator">&lt;</span> eps<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&lt;</span> y<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="三、向量"><a href="#三、向量" class="headerlink" title="三、向量"></a>三、向量</h2><h3 id="向量的加减法与数乘运算"><a href="#向量的加减法与数乘运算" class="headerlink" title="向量的加减法与数乘运算"></a>向量的加减法与数乘运算</h3><ol>
+<li>加法：$\vec A(x1, y1) + \vec B(x2, y2) = \vec C(x1 + x2, y1 + y2)$</li>
+<li>减法：$\vec A(x1, y1) - \vec B(x2, y2) = \vec C(x1 - x2, y1 - y2)$</li>
+<li>数乘：$a \cdot \vec A(x1, y1) = (a \cdot x1, a \cdot y1)$ </li>
+</ol>
+<h3 id="内积（点积）"><a href="#内积（点积）" class="headerlink" title="内积（点积）"></a>内积（点积）</h3><p>​    $\vec A \cdot \vec B = |\vec A| \ |\vec B| \ cos\theta$ </p>
+<ol>
+<li><p>几何意义：$\vec A$ 在 $\vec B$ 上的投影与 $|\vec B|$ 的乘积。</p>
+</li>
+<li><p>代码实现：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">double</span> <span class="token function">dot</span><span class="token punctuation">(</span>Point a<span class="token punctuation">,</span> Point b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">.</span>x <span class="token operator">*</span> b<span class="token punctuation">.</span>x <span class="token operator">+</span> a<span class="token punctuation">.</span>y <span class="token operator">*</span> b<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+</li>
+</ol>
+<h3 id="外积（叉积）"><a href="#外积（叉积）" class="headerlink" title="外积（叉积）"></a>外积（叉积）</h3><p>​    $\vec A \times \vec B = |\vec A| \ |\vec B| \ sin\theta$</p>
+<ol>
+<li><p>几何意义：$\vec A$ 与 $\vec B$ 张成的平行四边形的有向面积。$\vec B$ 在 $\vec A$ 的逆时针方向为正。</p>
+</li>
+<li><p>代码实现：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">double</span> <span class="token function">corss</span><span class="token punctuation">(</span>Point a<span class="token punctuation">,</span> Point b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">.</span>x <span class="token operator">*</span> b<span class="token punctuation">.</span>y <span class="token operator">-</span> b<span class="token punctuation">.</span>x <span class="token operator">*</span> a<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+</li>
+</ol>
+<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><ol>
+<li><p>取模</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">double</span> <span class="token function">get_length</span><span class="token punctuation">(</span>Point a<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>计算向量夹角</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">double</span> <span class="token function">get_angle</span><span class="token punctuation">(</span>Point a<span class="token punctuation">,</span> Point b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">acos</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">get_length</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">get_length</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>计算两个向量构成的平行四边形有向面积</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">double</span> <span class="token function">area</span><span class="token punctuation">(</span>Point a<span class="token punctuation">,</span> Point b<span class="token punctuation">,</span> Point c<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">cross</span><span class="token punctuation">(</span>b <span class="token operator">-</span> a<span class="token punctuation">,</span> c <span class="token operator">-</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>$\vec A$ 顺时针旋转 $C$ 角度后的坐标</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Point <span class="token function">rotate</span><span class="token punctuation">(</span>Point a<span class="token punctuation">,</span> <span class="token keyword">double</span> angle<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">Point</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>x <span class="token operator">*</span> <span class="token function">cos</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span> <span class="token operator">+</span> a<span class="token punctuation">.</span>y <span class="token operator">*</span> <span class="token function">sin</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">-</span>a<span class="token punctuation">.</span>x <span class="token operator">*</span> <span class="token function">sin</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span> <span class="token operator">+</span> a<span class="token punctuation">.</span>y <span class="token operator">*</span> <span class="token function">cos</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+</li>
+</ol>
+<h2 id="四、点与线"><a href="#四、点与线" class="headerlink" title="四、点与线"></a>四、点与线</h2><h3 id="直线表达式"><a href="#直线表达式" class="headerlink" title="直线表达式"></a>直线表达式</h3><ol>
+<li>一般式：$ax + by + c = 0$</li>
+<li>点向式：$p_0 + t \cdot \vec v$ （最常用，下文基本都是点向式）</li>
+<li>斜截式：$y = kx + b$ </li>
+</ol>
+<h3 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h3><ol>
+<li><p>判断点在直线上：$\vec A \times \vec B = 0$ ，即 $\vec v$ 与 $p - p_0$ </p>
+</li>
+<li><p>两直线交点：</p>
+<p><img src="https://i.loli.net/2021/02/20/ryZVojne6p9XMSR.png"></p>
+<p>如上图所示，已知向量的叉积表示平行四边形的面积，同时平行四边形在底边相同的情况下，面积之比等于高之比，可知 $\frac{\vec w \times \vec u}{\vec v \times \vec w}$ 就是高的比值（即图中两条红线）。由相似三角形可知，高的比值即为图中黄色部分线段与蓝色部分线段之比，这样就得到了系数 $t$ ，由点向式可直接得出交点。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Point <span class="token function">get_line_intersection</span><span class="token punctuation">(</span>Point p<span class="token punctuation">,</span> Vector v<span class="token punctuation">,</span> Point q<span class="token punctuation">,</span> Vector w<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Vector u <span class="token operator">=</span> p <span class="token operator">-</span> q<span class="token punctuation">;</span>
+    <span class="token keyword">double</span> t <span class="token operator">=</span> <span class="token function">cross</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> u<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">cross</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> w<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> p <span class="token operator">+</span> t <span class="token operator">*</span> v<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>点到直线的距离：由叉积的定义可以推导</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">double</span> <span class="token function">distance_to_line</span><span class="token punctuation">(</span>Point p<span class="token punctuation">,</span> Point a<span class="token punctuation">,</span> Point b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Vector v1 <span class="token operator">=</span> b <span class="token operator">-</span> a<span class="token punctuation">,</span> v2 <span class="token operator">=</span> p <span class="token operator">-</span> a<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">fabs</span><span class="token punctuation">(</span><span class="token function">cross</span><span class="token punctuation">(</span>v1<span class="token punctuation">,</span> v2<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">get_length</span><span class="token punctuation">(</span>v1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>点到线段的距离：</p>
+<p><img src="https://i.loli.net/2021/02/20/KaRtw7NklUZ4exE.png"></p>
+<p>记 $\vec v_1 = b - a \quad \vec v_2 = p - a \quad \vec v_3 = p - b$ ，若点 $p$ 在 $p_1$ 位置，可以发现 $\vec v_1 \cdot \vec v_2 &lt; 0$ ，此时距离即为 $|\vec v_2|$ ；若点 $p$ 在 $p_3$ 位置，则 $\vec v_1 \cdot \vec v_3 &gt; 0$ ，此时距离即为 $|\vec v_3|$；否则点 $p$ 位于 $p_2$ 位置，此时距离为点 $p$ 至直线 $ab$ 的距离。 </p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">dobule <span class="token function">distance_to_segment</span><span class="token punctuation">(</span>Point p<span class="token punctuation">,</span> Point a<span class="token punctuation">,</span> Point b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">==</span> b<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">get_length</span><span class="token punctuation">(</span>p <span class="token operator">-</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Vector v1 <span class="token operator">=</span> b <span class="token operator">-</span> a<span class="token punctuation">,</span> v2 <span class="token operator">=</span> p <span class="token operator">-</span> a<span class="token punctuation">,</span> v3 <span class="token operator">=</span> p <span class="token operator">-</span> b<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">cdot</span><span class="token punctuation">(</span>v1<span class="token punctuation">,</span> v2<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">get_length</span><span class="token punctuation">(</span>v2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">cdot</span><span class="token punctuation">(</span>v1<span class="token punctuation">,</span> v3<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">get_length</span><span class="token punctuation">(</span>v3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">distance_to_line</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>点在直线上的投影：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Point <span class="token function">get_line_projection</span><span class="token punctuation">(</span>Point p<span class="token punctuation">,</span> Point a<span class="token punctuation">,</span> Point b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Vector v <span class="token operator">=</span> b <span class="token operator">-</span> a<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> <span class="token function">dot</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> p <span class="token operator">-</span> a<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">dot</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token operator">*</span> v<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>点是否在线段上：</p>
+<p>先判断点 $p$ 在直线 $a b$ 上，再判断是否在线段 $ab$ 上。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">bool</span> <span class="token function">on_segment</span><span class="token punctuation">(</span>Point p<span class="token punctuation">,</span> Point a<span class="token punctuation">,</span> Point b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">sign</span><span class="token punctuation">(</span><span class="token function">cross</span><span class="token punctuation">(</span>p <span class="token operator">-</span> a<span class="token punctuation">,</span> p <span class="token operator">-</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token function">sign</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>p <span class="token operator">-</span> a<span class="token punctuation">,</span> p <span class="token operator">-</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>判断两线段是否相交：</p>
+<p><img src="https://i.loli.net/2021/02/20/3F7NaHmpAuEqR9s.png"></p>
+<p>判断同时满足：$a_1 \ a_2$ 在直线 $b_1 b_2$ 的两侧，$b_1 \ b_2$ 在直线 $a_1 a_2$ 的两侧即可。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">bool</span> <span class="token function">segment_intersection</span><span class="token punctuation">(</span>Point a1<span class="token punctuation">,</span> Point a2<span class="token punctuation">,</span> Point b1<span class="token punctuation">,</span> Point b2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">double</span> c1 <span class="token operator">=</span> <span class="token function">cross</span><span class="token punctuation">(</span>a2 <span class="token operator">-</span> a1<span class="token punctuation">,</span> b1 <span class="token operator">-</span> a1<span class="token punctuation">)</span><span class="token punctuation">,</span> c2 <span class="token operator">=</span> <span class="token function">cross</span><span class="token punctuation">(</span>a2 <span class="token operator">-</span> a1<span class="token punctuation">,</span> b2 <span class="token operator">-</span> a1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">double</span> c3 <span class="token operator">=</span> <span class="token function">corss</span><span class="token punctuation">(</span>b2 <span class="token operator">-</span> b1<span class="token punctuation">,</span> a1 <span class="token operator">-</span> b1<span class="token punctuation">)</span><span class="token punctuation">,</span> c4 <span class="token operator">=</span> <span class="token function">cross</span><span class="token punctuation">(</span>b2 <span class="token operator">-</span> b1<span class="token punctuation">,</span> a2 <span class="token operator">-</span> b1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">sign</span><span class="token punctuation">(</span>c1<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">sign</span><span class="token punctuation">(</span>c2<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token function">sign</span><span class="token punctuation">(</span>c3<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">sign</span><span class="token punctuation">(</span>c4<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+</li>
+</ol>
+<h2 id="五、多边形"><a href="#五、多边形" class="headerlink" title="五、多边形"></a>五、多边形</h2><h3 id="三角形"><a href="#三角形" class="headerlink" title="三角形"></a>三角形</h3><ol>
+<li>面积：<ul>
+<li>叉积的一半</li>
+<li>海伦公式：$p = \frac{a + b + c}{2} \quad S = \sqrt{p \cdot (p - a) \cdot (p - b) \cdot (p - c)}$ </li>
+</ul>
+</li>
+<li>三角形的四心：<ul>
+<li>外心：外接圆圆心。三边中垂线交点，到三个顶点距离相等。</li>
+<li>内心：内切圆圆心，角平分线交点，到三边距离相等。</li>
+<li>垂心：三条垂线交点。</li>
+<li>重心：三条中线交点（到三角形三顶点距离的平方和最小的点，三角形内到三边距离之积最大的点）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="普通多边形"><a href="#普通多边形" class="headerlink" title="普通多边形"></a>普通多边形</h3><p>​    通常按逆时针储存所有的点</p>
+<ol>
+<li><p>定义</p>
+<ul>
+<li><p>多边形：由在同一平面且不再同一直线上的多条线段首尾顺次连接且不相交所组成的图形叫多边形。</p>
+</li>
+<li><p>简单多边形：简单多边形是除相邻边外其它边不相交的多边形。</p>
+</li>
+<li><p>凸多边形：过多边形的任意一边做一条直线，其他所有顶点都在该直线的同侧，则这个多边形是凸多边形。</p>
+<p>任意凸多边形的外角和为 $360°$ </p>
+<p>任意凸多边形的内角和为 $(n - 2) \cdot 180°$ </p>
+</li>
+</ul>
+</li>
+<li><p>常用函数</p>
+<ul>
+<li><p>求多边形面积面积（未必是凸多边形）</p>
+<p>从第一个顶点开始把多边形分成 $n - 2$ 个三角形，求面积和即可。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">double</span> <span class="token function">polygon_area</span><span class="token punctuation">(</span>Point p<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">double</span> s <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> 
+        s <span class="token operator">+=</span> <span class="token function">cross</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> p<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> s <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>判断点是否在多边形内（不一定是凸多边形）</p>
+<ul>
+<li>射线法：从该点任意做一条和所有边都不平行的射线。与多边形交点为偶数，则在多边形外，为奇数，则在多边形内。</li>
+<li>转角法：按照逆时针顺序从该点到每条边连线，转过 $360°$ 说明在多边形内，转过 $0°$ 则在多边形外。</li>
+</ul>
+</li>
+<li><p>判断点是否在凸多边形内：判断点是否在所有边的左边即可。</p>
+</li>
+</ul>
+</li>
+<li><p>皮克定理</p>
+<p>皮克定理是指一个计算点阵中顶点在格点上的多边形面积公式该公式可以表示为:<br>$$<br>S = a + \frac{b}{2} - 1<br>$$<br>其中 $a$ 表示多边形内部的点数，$b$ 表示多边形边界上的点数，$S$ 表示多边形的面积。</p>
+</li>
+</ol>
+
                 
             </div>
             <hr/>
@@ -501,7 +702,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ssspirit.github.io/2021/2/educational-codeforces-round-104/">https://ssspirit.github.io/2021/2/educational-codeforces-round-104/</a>
+                    <a href="https://ssspirit.github.io/2021/2/ji-suan-ji-he-ji-chu-zhi-shi/">https://ssspirit.github.io/2021/2/ji-suan-ji-he-ji-chu-zhi-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -538,7 +739,23 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E5%90%91%E9%87%8F/">
+                                    <span class="chip bg-color">向量</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/">
+                                    <span class="chip bg-color">计算几何</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%82%B9%E4%B8%8E%E7%9B%B4%E7%BA%BF/">
+                                    <span class="chip bg-color">点与直线</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%A4%9A%E8%BE%B9%E5%BD%A2/">
+                                    <span class="chip bg-color">多边形</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -706,9 +923,72 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/2/ji-suan-ji-he-ji-chu-zhi-shi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="计算几何基础知识">
+                        
+                        <span class="card-title">计算几何基础知识</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="post-category">
+                                    计算几何
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%90%91%E9%87%8F/">
+                        <span class="chip bg-color">向量</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/">
+                        <span class="chip bg-color">计算几何</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%82%B9%E4%B8%8E%E7%9B%B4%E7%BA%BF/">
+                        <span class="chip bg-color">点与直线</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%9A%E8%BE%B9%E5%BD%A2/">
+                        <span class="chip bg-color">多边形</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/2/codeforces-round-703-div.2/">
                     <div class="card-image">
@@ -726,9 +1006,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -758,67 +1038,6 @@
                     
                     <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
                         <span class="chip bg-color">二分查找</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/1/sdut-2021-winter-individual-contest-g/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="SDUT 2021 Winter Individual Contest - G">
-                        
-                        <span class="card-title">SDUT 2021 Winter Individual Contest - G</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            2019 ICPC Mid-Central Regional A - Basketball One-on-One C - Convoy F - Dragon Ball I H - Farming Mars I - Soft Passwords L - Umm Code
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-27
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E8%AE%AD%E7%BB%83%E8%B5%9B%E8%A1%A5%E9%A2%98/" class="post-category">
-                                    训练赛补题
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E8%B4%AA%E5%BF%83/">
-                        <span class="chip bg-color">贪心</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/">
-                        <span class="chip bg-color">二分答案</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/">
-                        <span class="chip bg-color">最短路</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="chip bg-color">字符串</span>
                     </a>
                     
                 </div>
