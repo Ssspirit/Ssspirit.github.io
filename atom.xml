@@ -6,7 +6,7 @@
   <link href="https://ssspirit.github.io/atom.xml" rel="self"/>
   
   <link href="https://ssspirit.github.io/"/>
-  <updated>2021-02-20T08:05:05.399Z</updated>
+  <updated>2021-03-13T14:21:58.202Z</updated>
   <id>https://ssspirit.github.io/</id>
   
   <author>
@@ -15,6 +15,72 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Gym102896 C - Color the Tree</title>
+    <link href="https://ssspirit.github.io/2021/3/gym102896-c-color-the-tree/"/>
+    <id>https://ssspirit.github.io/2021/3/gym102896-c-color-the-tree/</id>
+    <published>2021-03-13T13:15:44.000Z</published>
+    <updated>2021-03-13T14:21:58.202Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;C-Color-the-Tree&quot;&gt;&lt;a href=&quot;#C-Color-the-Tree&quot; class=&quot;headerlink&quot; title=&quot;C - Color the Tree&quot;&gt;&lt;/a&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="图论" scheme="https://ssspirit.github.io/categories/%E5%9B%BE%E8%AE%BA/"/>
+    
+    
+    <category term="思维" scheme="https://ssspirit.github.io/tags/%E6%80%9D%E7%BB%B4/"/>
+    
+    <category term="DFS" scheme="https://ssspirit.github.io/tags/DFS/"/>
+    
+    <category term="树" scheme="https://ssspirit.github.io/tags/%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SDUT 2021 Winter Individual Contest - M</title>
+    <link href="https://ssspirit.github.io/2021/2/sdut-2021-winter-individual-contest-m/"/>
+    <id>https://ssspirit.github.io/2021/2/sdut-2021-winter-individual-contest-m/</id>
+    <published>2021-02-22T09:10:15.000Z</published>
+    <updated>2021-02-22T10:12:29.666Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="训练赛补题" scheme="https://ssspirit.github.io/categories/%E8%AE%AD%E7%BB%83%E8%B5%9B%E8%A1%A5%E9%A2%98/"/>
+    
+    
+    <category term="前缀和" scheme="https://ssspirit.github.io/tags/%E5%89%8D%E7%BC%80%E5%92%8C/"/>
+    
+    <category term="最短路" scheme="https://ssspirit.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
+    
+    <category term="博弈" scheme="https://ssspirit.github.io/tags/%E5%8D%9A%E5%BC%88/"/>
+    
+    <category term="并查集" scheme="https://ssspirit.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+    
+    <category term="拓扑排序" scheme="https://ssspirit.github.io/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/"/>
+    
+    <category term="生成树" scheme="https://ssspirit.github.io/tags/%E7%94%9F%E6%88%90%E6%A0%91/"/>
+    
+    <category term="匹配" scheme="https://ssspirit.github.io/tags/%E5%8C%B9%E9%85%8D/"/>
+    
+  </entry>
   
   <entry>
     <title>计算几何基础知识</title>
