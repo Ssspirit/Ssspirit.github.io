@@ -83,7 +83,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo fc-cache -fsv
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="vscode-写-latex-配置">VSCode 写 LaTex 配置
+&lt;/div>&lt;h2 id="vscode-的-latex-配置">VSCode 的 LaTex 配置
 &lt;/h2>&lt;h3 id="基础配置">基础配置
 &lt;/h3>&lt;p>安装以下几个插件：&lt;/p>
 &lt;ul>
@@ -292,7 +292,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gzip *.synctex
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="配置-latexindent-格式化-tex-文档">配置 latexindent 格式化 tex 文档
+&lt;/div>&lt;h3 id="latexindent-格式化-tex-文档">latexindent 格式化 tex 文档
 &lt;/h3>&lt;p>在 &lt;code>setting.json&lt;/code> 中添加如下内容：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
