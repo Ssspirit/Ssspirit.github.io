@@ -8,9 +8,9 @@
 <span>链接</span></a></li><li class=menu-bottom-section><ol class=menu><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
 <select name=language title=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://rxzcloud.top/ selected>中文</option><option value=https://rxzcloud.top/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
 <svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#安装-wsl2-虚拟机到非系统盘>安装 WSL2 虚拟机到非系统盘</a></li><li><a href=#下载-texlive-并安装至-wsl>下载 TeXLive 并安装至 WSL</a></li><li><a href=#踩坑>踩坑</a><ol><li><a href=#xxxsty-not-found>&lsquo;xxx.sty&rsquo; not found</a></li><li><a href=#sudo-执行-tlmgrcommand-not-found>sudo 执行 tlmgr，command not found</a></li><li><a href=#编译一个-beamer-模板莫名失败>编译一个 Beamer 模板莫名失败</a></li><li><a href=#复制-windows-字体到-wsl>复制 Windows 字体到 WSL</a></li></ol></li><li><a href=#参考文献>参考文献</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/latex/>LaTex</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/posts/2024/install-texlive-on-wsl/>WSL2安装TeXLive踩坑记录</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#安装-wsl2-虚拟机到非系统盘>安装 WSL2 虚拟机到非系统盘</a></li><li><a href=#下载-texlive-并安装至-wsl>下载 TeXLive 并安装至 WSL</a></li><li><a href=#vscode-写-latex-配置>VSCode 写 LaTex 配置</a><ol><li><a href=#基础配置>基础配置</a></li><li><a href=#配置-sumatrapdf-作外部查看器>配置 SumatraPDF 作外部查看器</a></li><li><a href=#配置-latexindent-格式化-tex-文档>配置 latexindent 格式化 tex 文档</a></li></ol></li><li><a href=#踩坑>踩坑</a><ol><li><a href=#xxxsty-not-found>&lsquo;xxx.sty&rsquo; not found</a></li><li><a href=#sudo-执行-tlmgrcommand-not-found>sudo 执行 tlmgr，command not found</a></li><li><a href=#编译一个-beamer-模板莫名失败>编译一个 Beamer 模板莫名失败</a></li><li><a href=#复制-windows-字体到-wsl>复制 Windows 字体到 WSL</a></li><li><a href=#perl-依赖装不上>perl 依赖装不上</a></li></ol></li><li><a href=#参考文献>参考文献</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/latex/>LaTex</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/posts/2024/install-texlive-on-wsl/>WSL2安装TeXLive踩坑记录</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
 <time class=article-time--published>Dec 07, 2024</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>阅读时长: 3 分钟</time></div></footer></div></header><section class=article-content><p>众所周知，Windows 上 Latex 编译速度被 Linux 吊着打不知道几个来回。故打算以后都用 Linux 写 Latex。</p><p>但是毕竟 Linux 还算不上是主力系统，要写 Latex 重启切换 Linux 十分麻烦，那么我们可以在 wsl 上装 TeXLive。</p><p>又众所周知的是，wsl 默认装在 C 盘，而 TeXLive 近 10GB，所以有了这篇记录。</p><h2 id=安装-wsl2-虚拟机到非系统盘>安装 WSL2 虚拟机到非系统盘</h2><p>安装并启用 WSL2 教程已经满天飞了，故不再赘述。直接从安装 Linux 发行版开始。</p><ol><li><p>到 <a class=link href=https://learn.microsoft.com/zh-cn/windows/wsl/install-manual#downloading-distributions target=_blank rel=noopener>下载发行版</a> 选择你喜欢的系统下载，这里我选择了 Ubuntu 24.04。</p></li><li><p>把下载的文件 <code>Ubuntu2404-240425.AppxBundle</code> 后缀改为 <code>zip</code> 并解压。</p></li><li><p>在解压出的文件夹中选择符合你机器的系统包，AMD64 下所需文件为 <code>Ubuntu_2404.0.5.0_x64.appx</code>，改后缀为 <code>zip</code> 并将其<font color=red><strong>解压到你要安装的路径下</strong></font>。比如我把它放在了 <code>D:\WSL\Ubuntu2404-240425</code> 下。</p></li><li><p>双击路径中的 <code>ubuntu2404.exe</code> 等待并设置用户名和密码就大功告成了。</p></li><li><p>更换清华源等更多个性化配置自行搜索教程。</p></li></ol><h2 id=下载-texlive-并安装至-wsl>下载 TeXLive 并安装至 WSL</h2><p>到国内镜像站下载最新 TeXLive 镜像，比如 <a class=link href=https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/ target=_blank rel=noopener>清华大学开源软件镜像站</a>。</p><p>WSL 是可以直接访问 Windows 的文件的，比如 C 盘的内容在 <code>/mnt/c/</code> 下。假设我们下载的 TeXLive 镜像路径是 <code>C:\texlive2024.iso</code>。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+<time class=article-time--reading>阅读时长: 5 分钟</time></div></footer></div></header><section class=article-content><p>众所周知，Windows 上 Latex 编译速度被 Linux 吊着打不知道几个来回。故打算以后都用 Linux 写 Latex。</p><p>但是毕竟 Linux 还算不上是主力系统，要写 Latex 重启切换 Linux 十分麻烦，那么我们可以在 wsl 上装 TeXLive。</p><p>又众所周知的是，wsl 默认装在 C 盘，而 TeXLive 近 10GB，所以有了这篇记录。</p><h2 id=安装-wsl2-虚拟机到非系统盘>安装 WSL2 虚拟机到非系统盘</h2><p>安装并启用 WSL2 教程已经满天飞了，故不再赘述。直接从安装 Linux 发行版开始。</p><ol><li><p>到 <a class=link href=https://learn.microsoft.com/zh-cn/windows/wsl/install-manual#downloading-distributions target=_blank rel=noopener>下载发行版</a> 选择你喜欢的系统下载，这里我选择了 Ubuntu 24.04。</p></li><li><p>把下载的文件 <code>Ubuntu2404-240425.AppxBundle</code> 后缀改为 <code>zip</code> 并解压。</p></li><li><p>在解压出的文件夹中选择符合你机器的系统包，AMD64 下所需文件为 <code>Ubuntu_2404.0.5.0_x64.appx</code>，改后缀为 <code>zip</code> 并将其<font color=red><strong>解压到你要安装的路径下</strong></font>。比如我把它放在了 <code>D:\WSL\Ubuntu2404-240425</code> 下。</p></li><li><p>双击路径中的 <code>ubuntu2404.exe</code> 等待并设置用户名和密码就大功告成了。</p></li><li><p>更换清华源等更多个性化配置自行搜索教程。</p></li></ol><h2 id=下载-texlive-并安装至-wsl>下载 TeXLive 并安装至 WSL</h2><p>到国内镜像站下载最新 TeXLive 镜像，比如 <a class=link href=https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/ target=_blank rel=noopener>清华大学开源软件镜像站</a>。</p><p>WSL 是可以直接访问 Windows 的文件的，比如 C 盘的内容在 <code>/mnt/c/</code> 下。假设我们下载的 TeXLive 镜像路径是 <code>C:\texlive2024.iso</code>。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -38,6 +38,196 @@
 </span><span class=lnt>2
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo cp /usr/local/texlive/2024/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
 </span></span><span class=line><span class=cl>sudo fc-cache -fsv
+</span></span></code></pre></td></tr></table></div></div><h2 id=vscode-写-latex-配置>VSCode 写 LaTex 配置</h2><h3 id=基础配置>基础配置</h3><p>安装以下几个插件：</p><ul><li>LaTeX Workshop（必选）</li><li>English word hint</li><li>Path Autocomplete</li></ul><p>新建一个文件夹用于存放 <code>tex</code> 文件，假设名为 <code>LaTexSpace</code>。</p><p>新建 <code>LaTexSpace/.vscode/setting.json</code> 。</p><p>配置编译工具链，添加如下内容：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=s2>&#34;latex-workshop.latex.tools&#34;</span><span class=err>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;pdflatex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;command&#34;</span><span class=p>:</span> <span class=s2>&#34;pdflatex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;args&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;-synctex=1&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;-interaction=nonstopmode&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;-file-line-error&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;%DOCFILE%&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;xelatex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;command&#34;</span><span class=p>:</span> <span class=s2>&#34;xelatex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;args&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;-synctex=1&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;-interaction=nonstopmode&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;-file-line-error&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;%DOCFILE%&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;bibtex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;command&#34;</span><span class=p>:</span> <span class=s2>&#34;bibtex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;args&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;%DOCFILE%&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 下面这个是使用外部 PDF 查看器用的，仅配置编译工具链无需添加
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;correct_path&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;command&#34;</span><span class=p>:</span> <span class=s2>&#34;/home/spirit/LaTexSpace/.vscode/correct_path&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>]</span><span class=err>,</span>
+</span></span><span class=line><span class=cl><span class=c1>// 下面 tools 中的 correct_path 也是要在 VSCode+wsl 环境下使用 Windows 的 PDF 查看器才需要添加的。
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=s2>&#34;latex-workshop.latex.recipes&#34;</span><span class=err>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;xelatex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;tools&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;xelatex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;correct_path&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>],</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;pdflatex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;tools&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;pdflatex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;correct_path&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;xe-&gt;bib-&gt;xe-&gt;xe&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;tools&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;xelatex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;bibtex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;xelatex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;xelatex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;correct_path&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;pdf-&gt;bib-&gt;pdf-&gt;pdf&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;tools&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;pdflatex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;bibtex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;pdflatex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;pdflatex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;correct_path&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>]</span><span class=err>,</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=配置-sumatrapdf-作外部查看器>配置 SumatraPDF 作外部查看器</h3><p>首先贴上 <a class=link href=https://www.sumatrapdfreader.org/ target=_blank rel=noopener>SumatraPDF官网</a>。</p><p>在设置文件中添加以下内容：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=s2>&#34;latex-workshop.view.pdf.viewer&#34;</span><span class=err>:</span> <span class=s2>&#34;external&#34;</span><span class=err>,</span>
+</span></span><span class=line><span class=cl><span class=s2>&#34;latex-workshop.view.pdf.external.viewer.command&#34;</span><span class=err>:</span> <span class=s2>&#34;/mnt/d/Program/SumatraPDF/SumatraPDF.exe&#34;</span><span class=err>,</span> <span class=c1>// 改为自己的路径
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=s2>&#34;latex-workshop.view.pdf.external.viewer.args&#34;</span><span class=err>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;%PDF%&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>]</span><span class=err>,</span>
+</span></span><span class=line><span class=cl><span class=s2>&#34;latex-workshop.view.pdf.external.synctex.command&#34;</span><span class=err>:</span> <span class=s2>&#34;/mnt/d/Program/SumatraPDF/SumatraPDF.exe&#34;</span><span class=err>,</span> <span class=c1>// 改为自己的路径
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=s2>&#34;latex-workshop.view.pdf.external.synctex.args&#34;</span><span class=err>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;-forward-search&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;\\\\wsl$\\Ubuntu-24.04\\%TEX%&#34;</span><span class=p>,</span> <span class=c1>// 中间的 Ubuntu-24.04 改为自己的发行版名称
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=s2>&#34;%LINE%&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;-reuse-instance&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;\\\\wsl$\\Ubuntu-24.04\\%PDF%&#34;</span> <span class=c1>// 改为自己的发行版名称
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>]</span><span class=err>,</span>
+</span></span></code></pre></td></tr></table></div></div><p>不知道自己发行版准确名称的话可以使用 <code>wsl -l -v</code> 命令查看。</p><p>此外还需要把 WSL 的路径转为 Windows 的，如上一小节添加 correct_path 工具，并新建 <code>LaTexSpace/.vscode/correct_path</code> 文件。其内容如下，注意其中的路径和发行版名称都要修改为自己的。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>gunzip *.synctex.gz
+</span></span><span class=line><span class=cl>sed -i <span class=s2>&#34;s/\/home\/spirit\/LaTexSpace\//\\\\\\\\wsl</span>$<span class=s2>\\\\Ubuntu-24.04\\\\home\\\\spirit\\\\LaTexSpace\\\\/g&#34;</span> *.synctex
+</span></span><span class=line><span class=cl>gzip *.synctex
+</span></span></code></pre></td></tr></table></div></div><h3 id=配置-latexindent-格式化-tex-文档>配置 latexindent 格式化 tex 文档</h3><p>在 <code>setting.json</code> 中添加如下内容：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=s2>&#34;latex-workshop.formatting.latex&#34;</span><span class=err>:</span> <span class=s2>&#34;latexindent&#34;</span><span class=err>,</span>
+</span></span><span class=line><span class=cl><span class=c1>// 修改为自己的 TeXLive 路径
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=s2>&#34;latex-workshop.formatting.latexindent.path&#34;</span><span class=err>:</span> <span class=s2>&#34;/usr/local/texlive/2024/bin/x86_64-linux/latexindent&#34;</span>
+</span></span></code></pre></td></tr></table></div></div><p>latexindent 是一个 perl 脚本。要使用它需要安装依赖：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo cpan Log::Log4perl
+</span></span><span class=line><span class=cl>sudo cpan Log::Dispatch
+</span></span><span class=line><span class=cl>sudo cpan YAML::Tiny
+</span></span><span class=line><span class=cl>sudo cpan File::HomeDir
+</span></span><span class=line><span class=cl>sudo cpan Unicode::GCString
 </span></span></code></pre></td></tr></table></div></div><h2 id=踩坑>踩坑</h2><h3 id=xxxsty-not-found>&lsquo;xxx.sty&rsquo; not found</h3><p>缺啥装啥就行。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo tlmgr install xxx
 </span></span></code></pre></td></tr></table></div></div><h3 id=sudo-执行-tlmgrcommand-not-found>sudo 执行 tlmgr，command not found</h3><p>因为 sudo 并不使用用户的环境变量，也不调用shell执行命令。故你折腾 <code>~/.bashrc</code> <code>/etc/profile</code> 什么的都是没用的。</p><p>可以在命令中指定环境变量：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -68,7 +258,33 @@
 </span></span><span class=line><span class=cl>sudo mkfontscale
 </span></span><span class=line><span class=cl>sudo mkfontdir
 </span></span><span class=line><span class=cl>fc-cache -fv
-</span></span></code></pre></td></tr></table></div></div><h2 id=参考文献>参考文献</h2><p><a class=link href=https://blog.mstg.top/archives/997 target=_blank rel=noopener>WSL2 虚拟机 其他盘安装(非C盘)及调试(含填坑)</a></p><p><a class=link href=https://www.cnblogs.com/eslzzyl/p/17358405.html target=_blank rel=noopener>TeX Live 2024 安装教程（Windows/WSL/Linux）</a></p><p><a class=link href=https://tex.stackexchange.com/questions/187073/permission-problem-when-installing-package-from-tlmgr target=_blank rel=noopener>Permission problem when installing package from tlmgr</a></p><p><a class=link href=https://askubuntu.com/questions/66498/setting-tex-live-path-for-root target=_blank rel=noopener>Setting TeX Live path for root</a></p></section><footer class=article-footer><section class=article-tags><a href=/tags/texlive/>TexLive</a>
+</span></span></code></pre></td></tr></table></div></div><h3 id=perl-依赖装不上>perl 依赖装不上</h3><p>需要先安装一些工具：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># 事到如今我也不知道哪个有用了，都tm装上得了</span>
+</span></span><span class=line><span class=cl>sudo apt install gcc g++ gcc-multilib g++-multilib make cmake build-essential libperl-dev build-essential libperl-dev 
+</span></span></code></pre></td></tr></table></div></div><p>这样还会有一个依赖 Log::Dispatch 装不上。顺着报错的依赖一路追到上游然后手动编译安装就好了：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>wget https://www.cpan.org/modules/by-module/Devel/Module-Pluggable-6.2.tar.gz
+</span></span><span class=line><span class=cl>gzip -dc Module-Pluggable-6.2.tar.gz <span class=p>|</span> tar xf -
+</span></span><span class=line><span class=cl><span class=nb>cd</span> Module-Pluggable-6.2
+</span></span><span class=line><span class=cl>perl Makefile.PL
+</span></span><span class=line><span class=cl>make
+</span></span><span class=line><span class=cl>make <span class=nb>test</span> 
+</span></span><span class=line><span class=cl>sudo make install
+</span></span></code></pre></td></tr></table></div></div><p>然后顺着这一串报错的依赖再装回来：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl> sudo cpan Test2::Plugin::NoWarnings
+</span></span><span class=line><span class=cl> sudo cpan Params::ValidationCompiler
+</span></span><span class=line><span class=cl> <span class=c1># 说不定直接跑这个就行了？试试？</span>
+</span></span><span class=line><span class=cl> sudo cpan Log::Dispatch
+</span></span></code></pre></td></tr></table></div></div><p>然后这 byd latexindent 就终于能用了。</p><p>说实话我现在感觉手写的 tex 挺好看的，没事别瞎折腾（能跑就行</p><h2 id=参考文献>参考文献</h2><p><a class=link href=https://blog.mstg.top/archives/997 target=_blank rel=noopener>WSL2 虚拟机 其他盘安装(非C盘)及调试(含填坑)</a></p><p><a class=link href=https://www.cnblogs.com/eslzzyl/p/17358405.html target=_blank rel=noopener>TeX Live 2024 安装教程（Windows/WSL/Linux）</a></p><p><a class=link href=https://tex.stackexchange.com/questions/187073/permission-problem-when-installing-package-from-tlmgr target=_blank rel=noopener>Permission problem when installing package from tlmgr</a></p><p><a class=link href=https://askubuntu.com/questions/66498/setting-tex-live-path-for-root target=_blank rel=noopener>Setting TeX Live path for root</a></p><p><a class=link href=https://groups.google.com/g/comp.lang.perl.modules/c/8ww36CFWRw0 target=_blank rel=noopener>CPAN general build error (or fail during &ldquo;install Module::ScanDeps&rdquo;)</a></p><p><a class=link href="https://github.com/hilinxinhui/VSCode_LaTeX_configuration?tab=readme-ov-file" target=_blank rel=noopener>hilinxinhui/VSCode_LaTeX_configuration</a></p><p><a class=link href=https://blog.csdn.net/lyh458/article/details/125930154 target=_blank rel=noopener>ubuntu下vscode LaTeX文档格式化</a></p><p><a class=link href=https://github.com/shinyypig/latex-vscode-config target=_blank rel=noopener>shinyypig/latex-vscode-config</a></p><p><a class=link href=https://blog.csdn.net/weixin_42694350/article/details/123320383 target=_blank rel=noopener>基于WSL-LaTeX的VS Code+SumatraPDF协作</a></p><p><a class=link href=https://zhuanlan.zhihu.com/p/337459645 target=_blank rel=noopener>WSL下LaTeX的VS Code+SumatraPDF协作</a></p><p><a class=link href=https://zhuanlan.zhihu.com/p/112108701 target=_blank rel=noopener>VS Code的LaTeX配置</a></p><p><a class=link href=https://zhuanlan.zhihu.com/p/374491983 target=_blank rel=noopener>LaTeX配置安装大对比：TeXLive/MiKTeX、Windows/WSL、xelatex/lualatex/pdflatex编译器的速度性能详细对比</a></p></section><footer class=article-footer><section class=article-tags><a href=/tags/texlive/>TexLive</a>
 <a href=/tags/wsl/>WSL</a>
 <a href=/tags/latex/>LaTex</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
 <span>Licensed under CC BY-NC-SA 4.0</span></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><footer class=site-footer><section class=copyright>&copy;
