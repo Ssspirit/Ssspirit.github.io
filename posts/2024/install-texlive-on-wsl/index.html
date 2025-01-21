@@ -212,7 +212,21 @@
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>gunzip *.synctex.gz
 </span></span><span class=line><span class=cl>sed -i <span class=s2>&#34;s/\/home\/spirit\/LaTexSpace\//\\\\\\\\wsl</span>$<span class=s2>\\\\Ubuntu-24.04\\\\home\\\\spirit\\\\LaTexSpace\\\\/g&#34;</span> *.synctex
 </span></span><span class=line><span class=cl>gzip *.synctex
-</span></span></code></pre></td></tr></table></div></div><h3 id=latexindent-格式化-tex-文档>latexindent 格式化 tex 文档</h3><p>在 <code>setting.json</code> 中添加如下内容：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>在 Windows 上新建一个 <code>vbs</code> 文件，路径自定义即可。</p><p>注意修改为自己的 wsl 发行版名称和 VSCode 路径。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>Set args = WScript.Arguments
+</span></span><span class=line><span class=cl>arg = &#34;&#34;
+</span></span><span class=line><span class=cl>For Each s In args
+</span></span><span class=line><span class=cl>arg = arg &amp; &#34; &#34; &amp; s
+</span></span><span class=line><span class=cl>Next
+</span></span><span class=line><span class=cl>WScript.CreateObject(&#34;WScript.Shell&#34;).Run &#34;wsl -d Ubuntu-24.04 &#39;/mnt/d/Program Files/Microsoft VS Code/bin/code&#39; &#34; &amp; arg, 0
+</span></span></code></pre></td></tr></table></div></div><p>在 SumatraPDF 的设置-选项中填写反向查找命令，注意微调。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>wscript <span class=s2>&#34;D:\Code\LaTex\Inverse Search.vbs&#34;</span> -r -g <span class=k>$(</span><span class=nb>echo</span> <span class=k>$(</span>wslpath <span class=s1>&#39;%f:%l&#39;</span><span class=k>)</span> <span class=s2>&#34;|&#34;</span> sed <span class=s1>&#39;s/\/mnt\/d\/wsl$\/Ubuntu-24.04//g&#39;</span><span class=k>)</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=latexindent-格式化-tex-文档>latexindent 格式化 tex 文档</h3><p><font color=red><strong>真没必要搞这个，费劲还没用</strong></font></p><p>在 <code>setting.json</code> 中添加如下内容：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=s2>&#34;latex-workshop.formatting.latex&#34;</span><span class=err>:</span> <span class=s2>&#34;latexindent&#34;</span><span class=err>,</span>
@@ -240,7 +254,7 @@
 </span></span><span class=line><span class=cl><span class=nb>alias</span> <span class=nv>shsudo</span><span class=o>=</span><span class=s1>&#39;sudo sh -l -c&#39;</span>
 </span></span></code></pre></td></tr></table></div></div><h3 id=编译一个-beamer-模板莫名失败>编译一个 Beamer 模板莫名失败</h3><p>缺包导致的，TeXLive 镜像默认不带这些东西吗？</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo apt install latex-cjk-all texlive-lang-chinese texlive-lang-english
-</span></span></code></pre></td></tr></table></div></div><p>说起来我之前折腾 TeXLive 似乎是直接 <code>sudo apt install texlive-full</code> 来着，不知道会不会有这个问题。但我忘完了。</p><h3 id=复制-windows-字体到-wsl>复制 Windows 字体到 WSL</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>如果最开始用 <code>sudo apt install texlive-full</code> 安装环境似乎没有这个问题，但我没试。感兴趣的可以在新的系统上试试，坏处就是仓库里的是什么版本你就只能用什么版本。</p><h3 id=复制-windows-字体到-wsl>复制 Windows 字体到 WSL</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -258,7 +272,7 @@
 </span></span><span class=line><span class=cl>sudo mkfontscale
 </span></span><span class=line><span class=cl>sudo mkfontdir
 </span></span><span class=line><span class=cl>fc-cache -fv
-</span></span></code></pre></td></tr></table></div></div><h3 id=perl-依赖装不上>perl 依赖装不上</h3><p>需要先安装一些工具：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p><font color=red><strong>好消息</strong></font>：如果你能使用 deb 包，就不需要上面这个用处不大的东西了。</p><p>可以直接安装<a class=link href="https://pan.baidu.com/s/1J7Q4Fyhnjgg58c_rfjHYdA?pwd=yfsb" target=_blank rel=noopener>Linux字体包（百度网盘，提取码yfsb）</a>。非常全面的同时操作还简单。</p><p><a class=link href=https://pan.quark.cn/s/a2d2868c8bd5 target=_blank rel=noopener>LinuxFont（夸克网盘，提取码ks4L）</a> 。</p><h3 id=perl-依赖装不上>perl 依赖装不上</h3><p>需要先安装一些工具：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># 事到如今我也不知道哪个有用了，都tm装上得了</span>
 </span></span><span class=line><span class=cl>sudo apt install gcc g++ gcc-multilib g++-multilib make cmake build-essential libperl-dev build-essential libperl-dev 
@@ -288,7 +302,8 @@
 <a href=/tags/wsl/>WSL</a>
 <a href=/tags/latex/>LaTex</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
 <span>Licensed under CC BY-NC-SA 4.0</span></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><footer class=site-footer><section class=copyright>&copy;
-2024 Spirit</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.29.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+2024 -
+2025 Spirit</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.29.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 <button class="pswp__button pswp__button--share" title=Share></button>
 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
 <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">

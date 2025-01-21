@@ -292,8 +292,38 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gzip *.synctex
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
+&lt;/div>&lt;p>在 Windows 上新建一个 &lt;code>vbs&lt;/code> 文件，路径自定义即可。&lt;/p>
+&lt;p>注意修改为自己的 wsl 发行版名称和 VSCode 路径。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">Set args = WScript.Arguments
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">arg = &amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">For Each s In args
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">arg = arg &amp;amp; &amp;#34; &amp;#34; &amp;amp; s
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Next
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">WScript.CreateObject(&amp;#34;WScript.Shell&amp;#34;).Run &amp;#34;wsl -d Ubuntu-24.04 &amp;#39;/mnt/d/Program Files/Microsoft VS Code/bin/code&amp;#39; &amp;#34; &amp;amp; arg, 0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>在 SumatraPDF 的设置-选项中填写反向查找命令，注意微调。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">wscript &lt;span class="s2">&amp;#34;D:\Code\LaTex\Inverse Search.vbs&amp;#34;&lt;/span> -r -g &lt;span class="k">$(&lt;/span>&lt;span class="nb">echo&lt;/span> &lt;span class="k">$(&lt;/span>wslpath &lt;span class="s1">&amp;#39;%f:%l&amp;#39;&lt;/span>&lt;span class="k">)&lt;/span> &lt;span class="s2">&amp;#34;|&amp;#34;&lt;/span> sed &lt;span class="s1">&amp;#39;s/\/mnt\/d\/wsl$\/Ubuntu-24.04//g&amp;#39;&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
 &lt;/div>&lt;h3 id="latexindent-格式化-tex-文档">latexindent 格式化 tex 文档
-&lt;/h3>&lt;p>在 &lt;code>setting.json&lt;/code> 中添加如下内容：&lt;/p>
+&lt;/h3>&lt;p>&lt;font color=red>&lt;strong>真没必要搞这个，费劲还没用&lt;/strong>&lt;/font>&lt;/p>
+&lt;p>在 &lt;code>setting.json&lt;/code> 中添加如下内容：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -376,7 +406,7 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt install latex-cjk-all texlive-lang-chinese texlive-lang-english
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>说起来我之前折腾 TeXLive 似乎是直接 &lt;code>sudo apt install texlive-full&lt;/code> 来着，不知道会不会有这个问题。但我忘完了。&lt;/p>
+&lt;/div>&lt;p>如果最开始用 &lt;code>sudo apt install texlive-full&lt;/code> 安装环境似乎没有这个问题，但我没试。感兴趣的可以在新的系统上试试，坏处就是仓库里的是什么版本你就只能用什么版本。&lt;/p>
 &lt;h3 id="复制-windows-字体到-wsl">复制 Windows 字体到 WSL
 &lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -402,7 +432,12 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">fc-cache -fv
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="perl-依赖装不上">perl 依赖装不上
+&lt;/div>&lt;p>&lt;font color=red>&lt;strong>好消息&lt;/strong>&lt;/font>：如果你能使用 deb 包，就不需要上面这个用处不大的东西了。&lt;/p>
+&lt;p>可以直接安装&lt;a class="link" href="https://pan.baidu.com/s/1J7Q4Fyhnjgg58c_rfjHYdA?pwd=yfsb" target="_blank" rel="noopener"
+>Linux字体包（百度网盘，提取码yfsb）&lt;/a>。非常全面的同时操作还简单。&lt;/p>
+&lt;p>&lt;a class="link" href="https://pan.quark.cn/s/a2d2868c8bd5" target="_blank" rel="noopener"
+>LinuxFont（夸克网盘，提取码ks4L）&lt;/a> 。&lt;/p>
+&lt;h3 id="perl-依赖装不上">perl 依赖装不上
 &lt;/h3>&lt;p>需要先安装一些工具：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
