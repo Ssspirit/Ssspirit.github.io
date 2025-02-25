@@ -1,0 +1,133 @@
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="新服务器配置 我买的是阿里云99计划 99r 一年的服务器。找客服说一下一共能以优惠价买三年。\n镜像我选择了 ubuntu24.04。\n首先到阿里云控制台重置 root 密码。建议设置一个较为复杂的密码，并保存好。\n"><title>Anki同步服务器搭建</title>
+<link rel=canonical href=https://rxzcloud.top/posts/cloud-server/anki-sync-server/><link rel=stylesheet href=/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css><meta property='og:title' content="Anki同步服务器搭建"><meta property='og:description' content="新服务器配置 我买的是阿里云99计划 99r 一年的服务器。找客服说一下一共能以优惠价买三年。\n镜像我选择了 ubuntu24.04。\n首先到阿里云控制台重置 root 密码。建议设置一个较为复杂的密码，并保存好。\n"><meta property='og:url' content='https://rxzcloud.top/posts/cloud-server/anki-sync-server/'><meta property='og:site_name' content='Spirit-blog'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='anki'><meta property='article:tag' content='aliyun'><meta property='article:tag' content='cloud service'><meta property='article:published_time' content='2025-02-25T20:49:46+08:00'><meta property='article:modified_time' content='2025-02-25T20:49:46+08:00'><meta name=twitter:title content="Anki同步服务器搭建"><meta name=twitter:description content="新服务器配置 我买的是阿里云99计划 99r 一年的服务器。找客服说一下一共能以优惠价买三年。\n镜像我选择了 ubuntu24.04。\n首先到阿里云控制台重置 root 密码。建议设置一个较为复杂的密码，并保存好。\n"></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_2d0a36b0a5790e8b.png width=300 height=318 class=site-logo loading=lazy alt=Avatar></a></figure><div class=site-meta><h1 class=site-name><a href=/>Spirit-blog</a></h1><h2 class=site-description></h2></div></header><ol class=menu-social><li><a href=mailto:spirit1230@qq.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-mail" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/><path d="M3 7l9 6 9-6"/></svg></a></li><li><a href=https://github.com/Ssspirit target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>主页</span></a></li><li><a href=/%E5%85%B3%E4%BA%8E/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>归档</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>搜索</span></a></li><li><a href=/%E9%93%BE%E6%8E%A5/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span>链接</span></a></li><li class=menu-bottom-section><ol class=menu><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language title=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://rxzcloud.top/ selected>中文</option><option value=https://rxzcloud.top/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#新服务器配置>新服务器配置</a></li><li><a href=#安装-docker>安装 docker</a></li><li><a href=#创建-anki-sync-server>创建 anki-sync-server</a></li><li><a href=#参考文献>参考文献</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/cloud-service/>Cloud Service</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/posts/cloud-server/anki-sync-server/>Anki同步服务器搭建</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Feb 25, 2025</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 2 分钟</time></div></footer></div></header><section class=article-content><h2 id=新服务器配置>新服务器配置</h2><p>我买的是阿里云99计划 99r 一年的服务器。找客服说一下一共能以优惠价买三年。</p><p>镜像我选择了 ubuntu24.04。</p><p>首先到阿里云控制台重置 root 密码。建议设置一个较为复杂的密码，并保存好。</p><p>软件源已经默认设置为了阿里云源，无需手动更换了。</p><p>通过控制台的远程连接连接到服务器，安装一些必要软件：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>sudo apt update
+</span></span><span class=line><span class=cl>sudo apt upgrade
+</span></span><span class=line><span class=cl>sudo apt install vim gcc g++ gcc-multilib g++-multilib make cmake build-essential python-is-python3 wget gnupg dpkg apt-transport-https lsb-release ca-certificates curl
+</span></span></code></pre></td></tr></table></div></div><p>我习惯新建一个用户来做管理，添加新用户：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=c1># 添加账户 newuser</span>
+</span></span><span class=line><span class=cl>useradd newuser
+</span></span><span class=line><span class=cl><span class=c1># 为账户 newuser 设置密码</span>
+</span></span><span class=line><span class=cl>passwd newuser
+</span></span><span class=line><span class=cl><span class=c1># 将新用户添加到 root 组</span>
+</span></span><span class=line><span class=cl>adduser newuser sudo
+</span></span></code></pre></td></tr></table></div></div><p>修改ssh设置，仅允许密钥登录：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>sudo vim /etc/ssh/sshd_config
+</span></span><span class=line><span class=cl><span class=c1># 在配置文件中修改或添加以下两项：</span>
+</span></span><span class=line><span class=cl><span class=c1>#禁用密码验证</span>
+</span></span><span class=line><span class=cl>PasswordAuthentication no
+</span></span><span class=line><span class=cl><span class=c1>#启用密钥验证</span>
+</span></span><span class=line><span class=cl>PubkeyAuthentication yes
+</span></span></code></pre></td></tr></table></div></div><p>接下来添加公钥，如果本机没有生成过公钥，可以搜索 windows ssh公钥生成</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>mkdir /home/spirit/.ssh -p
+</span></span><span class=line><span class=cl><span class=c1># 将公钥粘贴进去保存即可</span>
+</span></span><span class=line><span class=cl>vim /home/spirit/.ssh/authorized_keys
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 重启ssh服务</span>
+</span></span><span class=line><span class=cl>sudo service ssh restart
+</span></span></code></pre></td></tr></table></div></div><p>然后就可以在本地使用 ssh 连接服务器了。</p><p>修改 <code>~\.ssh\config</code> 文件（注意修改自定义内容）：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>Host aliyun-ubuntu24
+</span></span><span class=line><span class=cl>    HostName your-ip
+</span></span><span class=line><span class=cl>    User your-user-name
+</span></span><span class=line><span class=cl>    TCPKeepAlive yes
+</span></span><span class=line><span class=cl>    ServerAliveInterval <span class=m>60</span>
+</span></span><span class=line><span class=cl>    ServerAliveCountMax <span class=m>30</span>
+</span></span><span class=line><span class=cl>    IdentityFile <span class=s2>&#34;C:\Users\your-local-username\.ssh\id_rsa&#34;</span>
+</span></span></code></pre></td></tr></table></div></div><p>修改一下默认 shell：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>ssh aliyun-ubuntu24
+</span></span><span class=line><span class=cl><span class=c1># 查看所有 shell</span>
+</span></span><span class=line><span class=cl>sudo cat /etc/shells
+</span></span><span class=line><span class=cl><span class=c1># 修改默认 shell 为 bash</span>
+</span></span><span class=line><span class=cl>chsh <span class=c1># 输入 bash 路径即可</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=安装-docker>安装 docker</h2><ol><li><p>添加 Docker 官方 GPG 密钥：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class=p>|</span> sudo apt-key add -
+</span></span></code></pre></td></tr></table></div></div></li><li><p>添加 Docker 仓库：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>sudo add-apt-repository <span class=s2>&#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class=k>$(</span>lsb_release -cs<span class=k>)</span><span class=s2> stable&#34;</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>更新软件包索引</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>sudo apt update
+</span></span></code></pre></td></tr></table></div></div></li><li><p>安装最新版本的Docker CE（社区版）：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>sudo apt-get install docker-ce
+</span></span></code></pre></td></tr></table></div></div></li><li><p>查看 Docker 是否正常运行：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>sudo systemctl status docker
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>docker --version
+</span></span></code></pre></td></tr></table></div></div></li><li><p>将当前用户添加到 docker 组：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>sudo usermod -aG docker <span class=si>${</span><span class=nv>USER</span><span class=si>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>配置镜像加速：在<a class=link href=https://cr.console.aliyun.com/cn-beijing/instances/mirrors target=_blank rel=noopener>阿里云容器镜像服务</a> 中可以获取专属 url。根据其中提示配置镜像即可。</p></li><li><p>重新登录后运行 hello-world 测试：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>docker run hello-world
+</span></span></code></pre></td></tr></table></div></div></li></ol><h2 id=创建-anki-sync-server>创建 anki-sync-server</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=c1># 首次添加需要以下命令，其中用户名、密码及端口自定义即可（就是那个23456）</span>
+</span></span><span class=line><span class=cl>docker run -d <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>	-e <span class=s2>&#34;SYNC_USER1=sync_name:password&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>    --publish 23456:8080 <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>    --volume ./data:/syncserver <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>    --name anki-sync-server <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>    ghcr.io/yangchuansheng/anki-sync-server:latest
+</span></span></code></pre></td></tr></table></div></div><p>docker run 会创建并运行新的容器。创建好容器以后用以下命令管理：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>docker ps <span class=o>[</span>-a<span class=o>]</span> <span class=c1># 加上-a参数是列出所有容器，否则是列出运行中的容器</span>
+</span></span><span class=line><span class=cl>docker rm CONTAINER <span class=c1># 删除名为 CONTAINER 的容器</span>
+</span></span><span class=line><span class=cl><span class=c1># 以下分别为运行/停止/重启容器</span>
+</span></span><span class=line><span class=cl>docker start CONTAINER
+</span></span><span class=line><span class=cl>docker stop CONTAINER
+</span></span><span class=line><span class=cl>docker restart CONTAINER
+</span></span></code></pre></td></tr></table></div></div><p>之后需要去阿里云-云服务器ECS-安全组-管理规则-入方向中开放端口。</p><p>使用手动添加，填入端口，授权对象为所有 IPv4即可。</p><p>同步服务器的地址即为：http://服务器公网IP:23456</p><h2 id=参考文献>参考文献</h2><p><a class=link href=https://blog.csdn.net/level_level/article/details/139222234 target=_blank rel=noopener>Ubuntu 24.04 LTS 安装Docker</a></p><p><a class=link href=https://www.runoob.com/docker/docker-command-manual.html target=_blank rel=noopener>Docker命令大全</a></p><p><a class=link href=https://github.com/yangchuansheng/anki-sync-server target=_blank rel=noopener>anki-sync-server</a></p></section><footer class=article-footer><section class=article-tags><a href=/tags/anki/>Anki</a>
+<a href=/tags/aliyun/>Aliyun</a>
+<a href=/tags/cloud-service/>Cloud Service</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><footer class=site-footer><section class=copyright>&copy;
+2024 -
+2025 Spirit</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.29.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
