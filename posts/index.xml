@@ -343,7 +343,7 @@
 &lt;li>Path Autocomplete&lt;/li>
 &lt;/ul>
 &lt;p>新建一个文件夹用于存放 &lt;code>tex&lt;/code> 文件，假设名为 &lt;code>LaTexSpace&lt;/code>。&lt;/p>
-&lt;p>新建 &lt;code>LaTexSpace/.vscode/setting.json&lt;/code> 。&lt;/p>
+&lt;p>新建 &lt;code>LaTexSpace/.vscode/settings.json&lt;/code> 。&lt;/p>
 &lt;p>配置编译工具链，添加如下内容：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -574,7 +574,7 @@
 &lt;/div>
 &lt;/div>&lt;h3 id="latexindent-格式化-tex-文档">latexindent 格式化 tex 文档
 &lt;/h3>&lt;p>&lt;font color=red>&lt;strong>真没必要搞这个，费劲还没用&lt;/strong>&lt;/font>&lt;/p>
-&lt;p>在 &lt;code>setting.json&lt;/code> 中添加如下内容：&lt;/p>
+&lt;p>在 &lt;code>settings.json&lt;/code> 中添加如下内容：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
