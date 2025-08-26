@@ -646,7 +646,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>&lt;span class="err">,&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="踩坑">踩坑
+&lt;/div>&lt;p>&lt;font color=red>&lt;strong>Okular的反向查找需要按住shift再单击鼠标左键&lt;/strong>&lt;/font>&lt;/p>
+&lt;h2 id="踩坑">踩坑
 &lt;/h2>&lt;h3 id="xxxsty-not-found">&amp;lsquo;xxx.sty&amp;rsquo; not found
 &lt;/h3>&lt;p>缺啥装啥就行。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -780,7 +781,7 @@
 &lt;/div>
 &lt;/div>&lt;p>然后这 byd latexindent 就终于能用了。&lt;/p>
 &lt;p>说实话我现在感觉手写的 tex 挺好看的，没事别瞎折腾（能跑就行&lt;/p>
-&lt;h2 id="参考文献">参考文献
+&lt;h2 id="ref">ref
 &lt;/h2>&lt;p>&lt;a class="link" href="https://blog.mstg.top/archives/997" target="_blank" rel="noopener"
 >WSL2 虚拟机 其他盘安装(非C盘)及调试(含填坑)&lt;/a>&lt;/p>
 &lt;p>&lt;a class="link" href="https://www.cnblogs.com/eslzzyl/p/17358405.html" target="_blank" rel="noopener"
@@ -804,7 +805,9 @@
 &lt;p>&lt;a class="link" href="https://zhuanlan.zhihu.com/p/112108701" target="_blank" rel="noopener"
 >VS Code的LaTeX配置&lt;/a>&lt;/p>
 &lt;p>&lt;a class="link" href="https://zhuanlan.zhihu.com/p/374491983" target="_blank" rel="noopener"
->LaTeX配置安装大对比：TeXLive/MiKTeX、Windows/WSL、xelatex/lualatex/pdflatex编译器的速度性能详细对比&lt;/a>&lt;/p></description></item><item><title>归档</title><link>https://rxzcloud.top/archives/</link><pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate><guid>https://rxzcloud.top/archives/</guid><description/></item><item><title>关于</title><link>https://rxzcloud.top/%E5%85%B3%E4%BA%8E/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://rxzcloud.top/%E5%85%B3%E4%BA%8E/</guid><description>&lt;p>卧槽，我怎么玉玉了&lt;/p></description></item><item><title>链接</title><link>https://rxzcloud.top/%E9%93%BE%E6%8E%A5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://rxzcloud.top/%E9%93%BE%E6%8E%A5/</guid><description>&lt;p>To use this feature, add &lt;code>links&lt;/code> section to frontmatter.&lt;/p>
+>LaTeX配置安装大对比：TeXLive/MiKTeX、Windows/WSL、xelatex/lualatex/pdflatex编译器的速度性能详细对比&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://zhuanlan.zhihu.com/p/492965557" target="_blank" rel="noopener"
+>Ubuntu 20.04 系统环境下配置LaTeX环境（正反向搜索）&lt;/a>&lt;/p></description></item><item><title>归档</title><link>https://rxzcloud.top/archives/</link><pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate><guid>https://rxzcloud.top/archives/</guid><description/></item><item><title>关于</title><link>https://rxzcloud.top/%E5%85%B3%E4%BA%8E/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://rxzcloud.top/%E5%85%B3%E4%BA%8E/</guid><description>&lt;p>卧槽，我怎么玉玉了&lt;/p></description></item><item><title>链接</title><link>https://rxzcloud.top/%E9%93%BE%E6%8E%A5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://rxzcloud.top/%E9%93%BE%E6%8E%A5/</guid><description>&lt;p>To use this feature, add &lt;code>links&lt;/code> section to frontmatter.&lt;/p>
 &lt;p>This page&amp;rsquo;s frontmatter:&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
