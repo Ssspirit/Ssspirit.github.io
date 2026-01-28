@@ -1,263 +1,113 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Spirit-blog</title><link>https://rxzcloud.top/</link><description>Recent content on Spirit-blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>Spirit</copyright><lastBuildDate>Tue, 25 Feb 2025 20:49:46 +0800</lastBuildDate><atom:link href="https://rxzcloud.top/index.xml" rel="self" type="application/rss+xml"/><item><title>Anki同步服务器搭建</title><link>https://rxzcloud.top/posts/cloud-server/anki-sync-server/</link><pubDate>Tue, 25 Feb 2025 20:49:46 +0800</pubDate><guid>https://rxzcloud.top/posts/cloud-server/anki-sync-server/</guid><description>&lt;h2 id="新服务器配置"&gt;新服务器配置
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Spirit-blog</title><link>https://rxzcloud.top/</link><description>Spirit-blog</description><generator>Hugo 0.154.5 &amp; FixIt v0.4.3-20260123080729-2a5bd268</generator><language>zh-CN</language><managingEditor>spirit1230@qq.com (Spirit)</managingEditor><webMaster>spirit1230@qq.com (Spirit)</webMaster><copyright>Spirit</copyright><lastBuildDate>Wed, 28 Jan 2026 19:37:48 +0000</lastBuildDate><atom:link href="https://rxzcloud.top/index.xml" rel="self" type="application/rss+xml"/><item><title>Anki同步服务器搭建</title><link>https://rxzcloud.top/posts/cloud-server/anki-sync-server/</link><pubDate>Tue, 25 Feb 2025 20:49:46 +0800</pubDate><author>spirit1230@qq.com (Spirit)</author><guid>https://rxzcloud.top/posts/cloud-server/anki-sync-server/</guid><category domain="https://rxzcloud.top/categories/cloud-service/">Cloud Service</category><description>&lt;h2 class="heading-element" id="新服务器配置"&gt;&lt;span&gt;新服务器配置&lt;/span&gt;
+ &lt;a href="#%e6%96%b0%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%85%8d%e7%bd%ae" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
 &lt;/h2&gt;&lt;p&gt;我买的是阿里云99计划 99r 一年的服务器。找客服说一下一共能以优惠价买三年。&lt;/p&gt;
 &lt;p&gt;镜像我选择了 ubuntu24.04。&lt;/p&gt;
 &lt;p&gt;首先到阿里云控制台重置 root 密码。建议设置一个较为复杂的密码，并保存好。&lt;/p&gt;
 &lt;p&gt;软件源已经默认设置为了阿里云源，无需手动更换了。&lt;/p&gt;
 &lt;p&gt;通过控制台的远程连接连接到服务器，安装一些必要软件：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt update
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt upgrade
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install vim gcc g++ gcc-multilib g++-multilib make cmake build-essential python-is-python3 wget gnupg dpkg apt-transport-https lsb-release ca-certificates curl
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;我习惯新建一个用户来做管理，添加新用户：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;span class="lnt"&gt;6
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 添加账户 newuser&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;useradd newuser
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 为账户 newuser 设置密码&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;passwd newuser
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 将新用户添加到 root 组&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;adduser newuser sudo
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;修改ssh设置，仅允许密钥登录：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;span class="lnt"&gt;6
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo vim /etc/ssh/sshd_config
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 在配置文件中修改或添加以下两项：&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#禁用密码验证&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;PasswordAuthentication no
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#启用密钥验证&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;PubkeyAuthentication yes
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;接下来添加公钥，如果本机没有生成过公钥，可以搜索 windows ssh公钥生成&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;span class="lnt"&gt;6
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mkdir /home/spirit/.ssh -p
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 将公钥粘贴进去保存即可&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vim /home/spirit/.ssh/authorized_keys
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 重启ssh服务&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo service ssh restart
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;然后就可以在本地使用 ssh 连接服务器了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt update
+sudo apt upgrade
+sudo apt install vim gcc g&amp;#43;&amp;#43; gcc-multilib g&amp;#43;&amp;#43;-multilib make cmake build-essential python-is-python3 wget gnupg dpkg apt-transport-https lsb-release ca-certificates curl&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我习惯新建一个用户来做管理，添加新用户：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 添加账户 newuser
+useradd newuser
+# 为账户 newuser 设置密码
+passwd newuser
+# 将新用户添加到 root 组
+adduser newuser sudo&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;修改ssh设置，仅允许密钥登录：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo vim /etc/ssh/sshd_config
+# 在配置文件中修改或添加以下两项：
+#禁用密码验证
+PasswordAuthentication no
+#启用密钥验证
+PubkeyAuthentication yes&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接下来添加公钥，如果本机没有生成过公钥，可以搜索 windows ssh公钥生成&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir /home/spirit/.ssh -p
+# 将公钥粘贴进去保存即可
+vim /home/spirit/.ssh/authorized_keys
+
+# 重启ssh服务
+sudo service ssh restart&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后就可以在本地使用 ssh 连接服务器了。&lt;/p&gt;
 &lt;p&gt;修改 &lt;code&gt;~\.ssh\config&lt;/code&gt; 文件（注意修改自定义内容）：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;span class="lnt"&gt;6
-&lt;/span&gt;&lt;span class="lnt"&gt;7
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Host aliyun-ubuntu24
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; HostName your-ip
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; User your-user-name
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; TCPKeepAlive yes
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; ServerAliveInterval &lt;span class="m"&gt;60&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; ServerAliveCountMax &lt;span class="m"&gt;30&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; IdentityFile &lt;span class="s2"&gt;&amp;#34;C:\Users\your-local-username\.ssh\id_rsa&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;修改一下默认 shell：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ssh aliyun-ubuntu24
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 查看所有 shell&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cat /etc/shells
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 修改默认 shell 为 bash&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;chsh &lt;span class="c1"&gt;# 输入 bash 路径即可&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id="安装-docker"&gt;安装 docker
+&lt;pre&gt;&lt;code&gt;Host aliyun-ubuntu24
+ HostName your-ip
+ User your-user-name
+ TCPKeepAlive yes
+ ServerAliveInterval 60
+ ServerAliveCountMax 30
+ IdentityFile &amp;#34;C:\Users\your-local-username\.ssh\id_rsa&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;修改一下默认 shell：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ssh aliyun-ubuntu24
+# 查看所有 shell
+sudo cat /etc/shells
+# 修改默认 shell 为 bash
+chsh # 输入 bash 路径即可&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="安装-docker"&gt;&lt;span&gt;安装 docker&lt;/span&gt;
+ &lt;a href="#%e5%ae%89%e8%a3%85-docker" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;添加 Docker 官方 GPG 密钥：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -fsSL https://download.docker.com/linux/ubuntu/gpg &lt;span class="p"&gt;|&lt;/span&gt; sudo apt-key add -
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;添加 Docker 仓库：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo add-apt-repository &lt;span class="s2"&gt;&amp;#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;lsb_release -cs&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt; stable&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;sudo add-apt-repository &amp;#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&amp;#34;&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;更新软件包索引&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt update
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt update&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;安装最新版本的Docker CE（社区版）：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt-get install docker-ce
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install docker-ce&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;查看 Docker 是否正常运行：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo systemctl status docker
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker --version
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;sudo systemctl status docker
+
+docker --version&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;将当前用户添加到 docker 组：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo usermod -aG docker &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;sudo usermod -aG docker ${USER}&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;配置镜像加速：在&lt;a class="link" href="https://cr.console.aliyun.com/cn-beijing/instances/mirrors" target="_blank" rel="noopener"
-&gt;阿里云容器镜像服务&lt;/a&gt; 中可以获取专属 url。根据其中提示配置镜像即可。&lt;/p&gt;
+&lt;p&gt;配置镜像加速：在&lt;a href="https://cr.console.aliyun.com/cn-beijing/instances/mirrors" target="_blank" rel="external nofollow noopener noreferrer"&gt;阿里云容器镜像服务&lt;/a&gt; 中可以获取专属 url。根据其中提示配置镜像即可。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;重新登录后运行 hello-world 测试：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker run hello-world
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;docker run hello-world&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id="创建-anki-sync-server"&gt;创建 anki-sync-server
-&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;span class="lnt"&gt;6
-&lt;/span&gt;&lt;span class="lnt"&gt;7
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 首次添加需要以下命令，其中用户名、密码及端口自定义即可（就是那个23456）&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker run -d &lt;span class="se"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; -e &lt;span class="s2"&gt;&amp;#34;SYNC_USER1=sync_name:password&amp;#34;&lt;/span&gt; &lt;span class="se"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --publish 23456:8080 &lt;span class="se"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --volume ./data:/syncserver &lt;span class="se"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --name anki-sync-server &lt;span class="se"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; ghcr.io/yangchuansheng/anki-sync-server:latest
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;docker run 会创建并运行新的容器。创建好容器以后用以下命令管理：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;span class="lnt"&gt;6
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker ps &lt;span class="o"&gt;[&lt;/span&gt;-a&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;# 加上-a参数是列出所有容器，否则是列出运行中的容器&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker rm CONTAINER &lt;span class="c1"&gt;# 删除名为 CONTAINER 的容器&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 以下分别为运行/停止/重启容器&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker start CONTAINER
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker stop CONTAINER
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker restart CONTAINER
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;之后需要去阿里云-云服务器ECS-安全组-管理规则-入方向中开放端口。&lt;/p&gt;
+&lt;h2 class="heading-element" id="创建-anki-sync-server"&gt;&lt;span&gt;创建 anki-sync-server&lt;/span&gt;
+ &lt;a href="#%e5%88%9b%e5%bb%ba-anki-sync-server" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;# 首次添加需要以下命令，其中用户名、密码及端口自定义即可（就是那个23456）
+docker run -d \
+	-e &amp;#34;SYNC_USER1=sync_name:password&amp;#34; \
+ --publish 23456:8080 \
+ --volume ./data:/syncserver \
+ --name anki-sync-server \
+ ghcr.io/yangchuansheng/anki-sync-server:latest&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;docker run 会创建并运行新的容器。创建好容器以后用以下命令管理：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker ps [-a] # 加上-a参数是列出所有容器，否则是列出运行中的容器
+docker rm CONTAINER # 删除名为 CONTAINER 的容器
+# 以下分别为运行/停止/重启容器
+docker start CONTAINER
+docker stop CONTAINER
+docker restart CONTAINER&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;之后需要去阿里云-云服务器ECS-安全组-管理规则-入方向中开放端口。&lt;/p&gt;
 &lt;p&gt;使用手动添加，填入端口，授权对象为所有 IPv4即可。&lt;/p&gt;
 &lt;p&gt;同步服务器的地址即为：http://服务器公网IP:23456&lt;/p&gt;
-&lt;h2 id="参考文献"&gt;参考文献
-&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://blog.csdn.net/level_level/article/details/139222234" target="_blank" rel="noopener"
-&gt;Ubuntu 24.04 LTS 安装Docker&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://www.runoob.com/docker/docker-command-manual.html" target="_blank" rel="noopener"
-&gt;Docker命令大全&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://github.com/yangchuansheng/anki-sync-server" target="_blank" rel="noopener"
-&gt;anki-sync-server&lt;/a&gt;&lt;/p&gt;</description></item><item><title>WSL2安装TeXLive踩坑记录</title><link>https://rxzcloud.top/posts/2024/install-texlive-on-wsl/</link><pubDate>Sat, 07 Dec 2024 20:03:48 +0800</pubDate><guid>https://rxzcloud.top/posts/2024/install-texlive-on-wsl/</guid><description>&lt;p&gt;众所周知，Windows 上 Latex 编译速度被 Linux 吊着打不知道几个来回。故打算以后都用 Linux 写 Latex。&lt;/p&gt;
+&lt;h2 class="heading-element" id="参考文献"&gt;&lt;span&gt;参考文献&lt;/span&gt;
+ &lt;a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;a href="https://blog.csdn.net/level_level/article/details/139222234" target="_blank" rel="external nofollow noopener noreferrer"&gt;Ubuntu 24.04 LTS 安装Docker&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.runoob.com/docker/docker-command-manual.html" target="_blank" rel="external nofollow noopener noreferrer"&gt;Docker命令大全&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/yangchuansheng/anki-sync-server" target="_blank" rel="external nofollow noopener noreferrer"&gt;anki-sync-server&lt;/a&gt;&lt;/p&gt;</description></item><item><title>WSL2安装TeXLive踩坑记录</title><link>https://rxzcloud.top/posts/2024/install-texlive-on-wsl/</link><pubDate>Sat, 07 Dec 2024 20:03:48 +0800</pubDate><author>spirit1230@qq.com (Spirit)</author><guid>https://rxzcloud.top/posts/2024/install-texlive-on-wsl/</guid><category domain="https://rxzcloud.top/categories/latex/">LaTex</category><description>&lt;p&gt;众所周知，Windows 上 Latex 编译速度被 Linux 吊着打不知道几个来回。故打算以后都用 Linux 写 Latex。&lt;/p&gt;
 &lt;p&gt;但是毕竟 Linux 还算不上是主力系统，要写 Latex 重启切换 Linux 十分麻烦，那么我们可以在 wsl 上装 TeXLive。&lt;/p&gt;
 &lt;p&gt;又众所周知的是，wsl 默认装在 C 盘，而 TeXLive 近 10GB，所以有了这篇记录。&lt;/p&gt;
-&lt;h2 id="安装-wsl2-虚拟机到非系统盘"&gt;安装 WSL2 虚拟机到非系统盘
+&lt;h2 class="heading-element" id="安装-wsl2-虚拟机到非系统盘"&gt;&lt;span&gt;安装 WSL2 虚拟机到非系统盘&lt;/span&gt;
+ &lt;a href="#%e5%ae%89%e8%a3%85-wsl2-%e8%99%9a%e6%8b%9f%e6%9c%ba%e5%88%b0%e9%9d%9e%e7%b3%bb%e7%bb%9f%e7%9b%98" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
 &lt;/h2&gt;&lt;p&gt;安装并启用 WSL2 教程已经满天飞了，故不再赘述。直接从安装 Linux 发行版开始。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;到 &lt;a class="link" href="https://learn.microsoft.com/zh-cn/windows/wsl/install-manual#downloading-distributions" target="_blank" rel="noopener"
-&gt;下载发行版&lt;/a&gt; 选择你喜欢的系统下载，这里我选择了 Ubuntu 24.04。&lt;/p&gt;
+&lt;p&gt;到 &lt;a href="https://learn.microsoft.com/zh-cn/windows/wsl/install-manual#downloading-distributions" target="_blank" rel="external nofollow noopener noreferrer"&gt;下载发行版&lt;/a&gt; 选择你喜欢的系统下载，这里我选择了 Ubuntu 24.04。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;把下载的文件 &lt;code&gt;Ubuntu2404-240425.AppxBundle&lt;/code&gt; 后缀改为 &lt;code&gt;zip&lt;/code&gt; 并解压。&lt;/p&gt;
@@ -272,70 +122,36 @@
 &lt;p&gt;更换清华源等更多个性化配置自行搜索教程。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id="下载-texlive-并安装至-wsl"&gt;下载 TeXLive 并安装至 WSL
-&lt;/h2&gt;&lt;p&gt;到国内镜像站下载最新 TeXLive 镜像，比如 &lt;a class="link" href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/" target="_blank" rel="noopener"
-&gt;清华大学开源软件镜像站&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 class="heading-element" id="下载-texlive-并安装至-wsl"&gt;&lt;span&gt;下载 TeXLive 并安装至 WSL&lt;/span&gt;
+ &lt;a href="#%e4%b8%8b%e8%bd%bd-texlive-%e5%b9%b6%e5%ae%89%e8%a3%85%e8%87%b3-wsl" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;到国内镜像站下载最新 TeXLive 镜像，比如 &lt;a href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/" target="_blank" rel="external nofollow noopener noreferrer"&gt;清华大学开源软件镜像站&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;WSL 是可以直接访问 Windows 的文件的，比如 C 盘的内容在 &lt;code&gt;/mnt/c/&lt;/code&gt; 下。假设我们下载的 TeXLive 镜像路径是 &lt;code&gt;C:\texlive2024.iso&lt;/code&gt;。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;span class="lnt"&gt;6
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 新建要挂载的目录&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo mkdir /mnt/texlive
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 把TeXLive镜像挂载过来&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo mount /mnt/c/texlive2024.iso /mnt/texlive
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 执行安装脚本&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo /mnt/texlive/install-tl
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;之后的页面你可以修改一些安装可选项，如果你懒得折腾就直接输入 &lt;code&gt;I&lt;/code&gt; 默认安装即可。（个性化选项若有所需请自行了解）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 新建要挂载的目录
+sudo mkdir /mnt/texlive 
+# 把TeXLive镜像挂载过来
+sudo mount /mnt/c/texlive2024.iso /mnt/texlive
+# 执行安装脚本
+sudo /mnt/texlive/install-tl&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;之后的页面你可以修改一些安装可选项，如果你懒得折腾就直接输入 &lt;code&gt;I&lt;/code&gt; 默认安装即可。（个性化选项若有所需请自行了解）&lt;/p&gt;
 &lt;p&gt;安装过程可能需要几分钟，等待即可。之后弹出镜像并删除文件夹：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo umount /mnt/texlive
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo rm -r /mnt/texlive
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;之后更新环境变量，修改 &lt;code&gt;~/.bashrc&lt;/code&gt; 文件在最后新增：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Add TeX Live to the PATH, MANPATH, INFOPATH&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/local/texlive/2024/bin/x86_64-linux:&lt;span class="nv"&gt;$PATH&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;MANPATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/share/man:/usr/local/texlive/2024/texmf-dist/doc/man:&lt;span class="nv"&gt;$MANPATH&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;INFOPATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/local/texlive/2024/texmf-dist/doc/info:&lt;span class="nv"&gt;$INFOPATH&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;重启终端或执行 &lt;code&gt;source ~/.bashrc&lt;/code&gt; 即可。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo umount /mnt/texlive
+sudo rm -r /mnt/texlive&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;之后更新环境变量，修改 &lt;code&gt;~/.bashrc&lt;/code&gt; 文件在最后新增：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Add TeX Live to the PATH, MANPATH, INFOPATH
+export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
+export MANPATH=/usr/share/man:/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;重启终端或执行 &lt;code&gt;source ~/.bashrc&lt;/code&gt; 即可。&lt;/p&gt;
 &lt;p&gt;之后可以执行 &lt;code&gt;tex -v&lt;/code&gt; 查看安装是否成功。&lt;/p&gt;
 &lt;p&gt;我看的教程还有一个操作，不知道什么作用，反正执行就对了（&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cp /usr/local/texlive/2024/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo fc-cache -fsv
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id="vscode-的-latex-配置"&gt;VSCode 的 LaTex 配置
-&lt;/h2&gt;&lt;h3 id="基础配置"&gt;基础配置
+&lt;pre&gt;&lt;code&gt;sudo cp /usr/local/texlive/2024/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
+sudo fc-cache -fsv&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="vscode-的-latex-配置"&gt;&lt;span&gt;VSCode 的 LaTex 配置&lt;/span&gt;
+ &lt;a href="#vscode-%e7%9a%84-latex-%e9%85%8d%e7%bd%ae" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="基础配置"&gt;&lt;span&gt;基础配置&lt;/span&gt;
+ &lt;a href="#%e5%9f%ba%e7%a1%80%e9%85%8d%e7%bd%ae" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
 &lt;/h3&gt;&lt;p&gt;安装以下几个插件：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;LaTeX Workshop（必选）&lt;/li&gt;
@@ -345,492 +161,220 @@
 &lt;p&gt;新建一个文件夹用于存放 &lt;code&gt;tex&lt;/code&gt; 文件，假设名为 &lt;code&gt;LaTexSpace&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;新建 &lt;code&gt;LaTexSpace/.vscode/settings.json&lt;/code&gt; 。&lt;/p&gt;
 &lt;p&gt;配置编译工具链，添加如下内容：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
-&lt;/span&gt;&lt;span class="lnt"&gt; 2
-&lt;/span&gt;&lt;span class="lnt"&gt; 3
-&lt;/span&gt;&lt;span class="lnt"&gt; 4
-&lt;/span&gt;&lt;span class="lnt"&gt; 5
-&lt;/span&gt;&lt;span class="lnt"&gt; 6
-&lt;/span&gt;&lt;span class="lnt"&gt; 7
-&lt;/span&gt;&lt;span class="lnt"&gt; 8
-&lt;/span&gt;&lt;span class="lnt"&gt; 9
-&lt;/span&gt;&lt;span class="lnt"&gt;10
-&lt;/span&gt;&lt;span class="lnt"&gt;11
-&lt;/span&gt;&lt;span class="lnt"&gt;12
-&lt;/span&gt;&lt;span class="lnt"&gt;13
-&lt;/span&gt;&lt;span class="lnt"&gt;14
-&lt;/span&gt;&lt;span class="lnt"&gt;15
-&lt;/span&gt;&lt;span class="lnt"&gt;16
-&lt;/span&gt;&lt;span class="lnt"&gt;17
-&lt;/span&gt;&lt;span class="lnt"&gt;18
-&lt;/span&gt;&lt;span class="lnt"&gt;19
-&lt;/span&gt;&lt;span class="lnt"&gt;20
-&lt;/span&gt;&lt;span class="lnt"&gt;21
-&lt;/span&gt;&lt;span class="lnt"&gt;22
-&lt;/span&gt;&lt;span class="lnt"&gt;23
-&lt;/span&gt;&lt;span class="lnt"&gt;24
-&lt;/span&gt;&lt;span class="lnt"&gt;25
-&lt;/span&gt;&lt;span class="lnt"&gt;26
-&lt;/span&gt;&lt;span class="lnt"&gt;27
-&lt;/span&gt;&lt;span class="lnt"&gt;28
-&lt;/span&gt;&lt;span class="lnt"&gt;29
-&lt;/span&gt;&lt;span class="lnt"&gt;30
-&lt;/span&gt;&lt;span class="lnt"&gt;31
-&lt;/span&gt;&lt;span class="lnt"&gt;32
-&lt;/span&gt;&lt;span class="lnt"&gt;33
-&lt;/span&gt;&lt;span class="lnt"&gt;34
-&lt;/span&gt;&lt;span class="lnt"&gt;35
-&lt;/span&gt;&lt;span class="lnt"&gt;36
-&lt;/span&gt;&lt;span class="lnt"&gt;37
-&lt;/span&gt;&lt;span class="lnt"&gt;38
-&lt;/span&gt;&lt;span class="lnt"&gt;39
-&lt;/span&gt;&lt;span class="lnt"&gt;40
-&lt;/span&gt;&lt;span class="lnt"&gt;41
-&lt;/span&gt;&lt;span class="lnt"&gt;42
-&lt;/span&gt;&lt;span class="lnt"&gt;43
-&lt;/span&gt;&lt;span class="lnt"&gt;44
-&lt;/span&gt;&lt;span class="lnt"&gt;45
-&lt;/span&gt;&lt;span class="lnt"&gt;46
-&lt;/span&gt;&lt;span class="lnt"&gt;47
-&lt;/span&gt;&lt;span class="lnt"&gt;48
-&lt;/span&gt;&lt;span class="lnt"&gt;49
-&lt;/span&gt;&lt;span class="lnt"&gt;50
-&lt;/span&gt;&lt;span class="lnt"&gt;51
-&lt;/span&gt;&lt;span class="lnt"&gt;52
-&lt;/span&gt;&lt;span class="lnt"&gt;53
-&lt;/span&gt;&lt;span class="lnt"&gt;54
-&lt;/span&gt;&lt;span class="lnt"&gt;55
-&lt;/span&gt;&lt;span class="lnt"&gt;56
-&lt;/span&gt;&lt;span class="lnt"&gt;57
-&lt;/span&gt;&lt;span class="lnt"&gt;58
-&lt;/span&gt;&lt;span class="lnt"&gt;59
-&lt;/span&gt;&lt;span class="lnt"&gt;60
-&lt;/span&gt;&lt;span class="lnt"&gt;61
-&lt;/span&gt;&lt;span class="lnt"&gt;62
-&lt;/span&gt;&lt;span class="lnt"&gt;63
-&lt;/span&gt;&lt;span class="lnt"&gt;64
-&lt;/span&gt;&lt;span class="lnt"&gt;65
-&lt;/span&gt;&lt;span class="lnt"&gt;66
-&lt;/span&gt;&lt;span class="lnt"&gt;67
-&lt;/span&gt;&lt;span class="lnt"&gt;68
-&lt;/span&gt;&lt;span class="lnt"&gt;69
-&lt;/span&gt;&lt;span class="lnt"&gt;70
-&lt;/span&gt;&lt;span class="lnt"&gt;71
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;latex-workshop.latex.tools&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;pdflatex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;pdflatex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;args&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;-synctex=1&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;-interaction=nonstopmode&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;-file-line-error&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;%DOCFILE%&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;xelatex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;xelatex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;args&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;-synctex=1&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;-interaction=nonstopmode&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;-file-line-error&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;%DOCFILE%&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;bibtex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;bibtex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;args&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;%DOCFILE%&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// 下面这个是使用外部 PDF 查看器用的，仅配置编译工具链无需添加
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;correct_path&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;/home/spirit/LaTexSpace/.vscode/correct_path&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;// 下面 tools 中的 correct_path 也是要在 VSCode+wsl 环境下使用 Windows 的 PDF 查看器才需要添加的。
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;latex-workshop.latex.recipes&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;xelatex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;tools&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;xelatex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;correct_path&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;],&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;pdflatex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;tools&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;pdflatex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;correct_path&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;xe-&amp;gt;bib-&amp;gt;xe-&amp;gt;xe&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;tools&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;xelatex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;bibtex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;xelatex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;xelatex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;correct_path&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;pdf-&amp;gt;bib-&amp;gt;pdf-&amp;gt;pdf&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;tools&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;pdflatex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;bibtex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;pdflatex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;pdflatex&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;correct_path&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id="配置-sumatrapdf-作外部查看器"&gt;配置 SumatraPDF 作外部查看器
-&lt;/h3&gt;&lt;p&gt;首先贴上 &lt;a class="link" href="https://www.sumatrapdfreader.org/" target="_blank" rel="noopener"
-&gt;SumatraPDF官网&lt;/a&gt;。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+ &amp;#34;latex-workshop.latex.tools&amp;#34;: [
+ {
+ &amp;#34;name&amp;#34;: &amp;#34;pdflatex&amp;#34;,
+ &amp;#34;command&amp;#34;: &amp;#34;pdflatex&amp;#34;,
+ &amp;#34;args&amp;#34;: [
+ &amp;#34;-synctex=1&amp;#34;,
+ &amp;#34;-interaction=nonstopmode&amp;#34;,
+ &amp;#34;-file-line-error&amp;#34;,
+ &amp;#34;%DOCFILE%&amp;#34;
+ ]
+ },
+ {
+ &amp;#34;name&amp;#34;: &amp;#34;xelatex&amp;#34;,
+ &amp;#34;command&amp;#34;: &amp;#34;xelatex&amp;#34;,
+ &amp;#34;args&amp;#34;: [
+ &amp;#34;-synctex=1&amp;#34;,
+ &amp;#34;-interaction=nonstopmode&amp;#34;,
+ &amp;#34;-file-line-error&amp;#34;,
+ &amp;#34;%DOCFILE%&amp;#34;
+ ]
+ },
+ {
+ &amp;#34;name&amp;#34;: &amp;#34;bibtex&amp;#34;,
+ &amp;#34;command&amp;#34;: &amp;#34;bibtex&amp;#34;,
+ &amp;#34;args&amp;#34;: [
+ &amp;#34;%DOCFILE%&amp;#34;
+ ]
+ },
+ // 下面这个是使用外部 PDF 查看器用的，仅配置编译工具链无需添加
+ {
+ &amp;#34;name&amp;#34;: &amp;#34;correct_path&amp;#34;,
+ &amp;#34;command&amp;#34;: &amp;#34;/home/spirit/LaTexSpace/.vscode/correct_path&amp;#34;
+ },
+ ],
+ // 下面 tools 中的 correct_path 也是要在 VSCode&amp;#43;wsl 环境下使用 Windows 的 PDF 查看器才需要添加的。
+ &amp;#34;latex-workshop.latex.recipes&amp;#34;: [
+ {
+ &amp;#34;name&amp;#34;: &amp;#34;xelatex&amp;#34;,
+ &amp;#34;tools&amp;#34;: [
+ &amp;#34;xelatex&amp;#34;,
+ &amp;#34;correct_path&amp;#34;
+ ],
+ },
+ {
+ &amp;#34;name&amp;#34;: &amp;#34;pdflatex&amp;#34;,
+ &amp;#34;tools&amp;#34;: [
+ &amp;#34;pdflatex&amp;#34;,
+ &amp;#34;correct_path&amp;#34;
+ ]
+ },
+ {
+ &amp;#34;name&amp;#34;: &amp;#34;xe-&amp;gt;bib-&amp;gt;xe-&amp;gt;xe&amp;#34;,
+ &amp;#34;tools&amp;#34;: [
+ &amp;#34;xelatex&amp;#34;,
+ &amp;#34;bibtex&amp;#34;,
+ &amp;#34;xelatex&amp;#34;,
+ &amp;#34;xelatex&amp;#34;,
+ &amp;#34;correct_path&amp;#34;
+ ]
+ },
+ {
+ &amp;#34;name&amp;#34;: &amp;#34;pdf-&amp;gt;bib-&amp;gt;pdf-&amp;gt;pdf&amp;#34;,
+ &amp;#34;tools&amp;#34;: [
+ &amp;#34;pdflatex&amp;#34;,
+ &amp;#34;bibtex&amp;#34;,
+ &amp;#34;pdflatex&amp;#34;,
+ &amp;#34;pdflatex&amp;#34;,
+ &amp;#34;correct_path&amp;#34;
+ ]
+ },
+ ]
+}&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="配置-sumatrapdf-作外部查看器"&gt;&lt;span&gt;配置 SumatraPDF 作外部查看器&lt;/span&gt;
+ &lt;a href="#%e9%85%8d%e7%bd%ae-sumatrapdf-%e4%bd%9c%e5%a4%96%e9%83%a8%e6%9f%a5%e7%9c%8b%e5%99%a8" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;首先贴上 &lt;a href="https://www.sumatrapdfreader.org/" target="_blank" rel="external nofollow noopener noreferrer"&gt;SumatraPDF官网&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;在设置文件中添加以下内容：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
-&lt;/span&gt;&lt;span class="lnt"&gt; 2
-&lt;/span&gt;&lt;span class="lnt"&gt; 3
-&lt;/span&gt;&lt;span class="lnt"&gt; 4
-&lt;/span&gt;&lt;span class="lnt"&gt; 5
-&lt;/span&gt;&lt;span class="lnt"&gt; 6
-&lt;/span&gt;&lt;span class="lnt"&gt; 7
-&lt;/span&gt;&lt;span class="lnt"&gt; 8
-&lt;/span&gt;&lt;span class="lnt"&gt; 9
-&lt;/span&gt;&lt;span class="lnt"&gt;10
-&lt;/span&gt;&lt;span class="lnt"&gt;11
-&lt;/span&gt;&lt;span class="lnt"&gt;12
-&lt;/span&gt;&lt;span class="lnt"&gt;13
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;latex-workshop.view.pdf.viewer&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;external&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;latex-workshop.view.pdf.external.viewer.command&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;/mnt/d/Program/SumatraPDF/SumatraPDF.exe&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;// 改为自己的路径
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;latex-workshop.view.pdf.external.viewer.args&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;%PDF%&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;latex-workshop.view.pdf.external.synctex.command&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;/mnt/d/Program/SumatraPDF/SumatraPDF.exe&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;// 改为自己的路径
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;latex-workshop.view.pdf.external.synctex.args&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;-forward-search&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;\\\\wsl$\\Ubuntu-24.04\\%TEX%&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;// 中间的 Ubuntu-24.04 改为自己的发行版名称
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;%LINE%&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;-reuse-instance&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;\\\\wsl$\\Ubuntu-24.04\\%PDF%&amp;#34;&lt;/span&gt; &lt;span class="c1"&gt;// 改为自己的发行版名称
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;不知道自己发行版准确名称的话可以使用 &lt;code&gt;wsl -l -v&lt;/code&gt; 命令查看。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+ &amp;#34;latex-workshop.view.pdf.viewer&amp;#34;: &amp;#34;external&amp;#34;,
+ &amp;#34;latex-workshop.view.pdf.external.viewer.command&amp;#34;: &amp;#34;/mnt/d/Program/SumatraPDF/SumatraPDF.exe&amp;#34;, // 改为自己的路径
+ &amp;#34;latex-workshop.view.pdf.external.viewer.args&amp;#34;: [
+ &amp;#34;%PDF%&amp;#34;
+ ],
+ &amp;#34;latex-workshop.view.pdf.external.synctex.command&amp;#34;: &amp;#34;/mnt/d/Program/SumatraPDF/SumatraPDF.exe&amp;#34;, // 改为自己的路径
+ &amp;#34;latex-workshop.view.pdf.external.synctex.args&amp;#34;: [
+ &amp;#34;-forward-search&amp;#34;,
+ &amp;#34;\\\\wsl$\\Ubuntu-24.04\\%TEX%&amp;#34;, // 中间的 Ubuntu-24.04 改为自己的发行版名称
+ &amp;#34;%LINE%&amp;#34;,
+ &amp;#34;-reuse-instance&amp;#34;,
+ &amp;#34;\\\\wsl$\\Ubuntu-24.04\\%PDF%&amp;#34; // 改为自己的发行版名称
+ ],
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不知道自己发行版准确名称的话可以使用 &lt;code&gt;wsl -l -v&lt;/code&gt; 命令查看。&lt;/p&gt;
 &lt;p&gt;此外还需要把 WSL 的路径转为 Windows 的，如上一小节添加 correct_path 工具，并新建 &lt;code&gt;LaTexSpace/.vscode/correct_path&lt;/code&gt; 文件。其内容如下，注意其中的路径和发行版名称都要修改为自己的。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gunzip *.synctex.gz
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i &lt;span class="s2"&gt;&amp;#34;s/\/home\/spirit\/LaTexSpace\//\\\\\\\\wsl&lt;/span&gt;$&lt;span class="s2"&gt;\\\\Ubuntu-24.04\\\\home\\\\spirit\\\\LaTexSpace\\\\/g&amp;#34;&lt;/span&gt; *.synctex
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gzip *.synctex
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;在 Windows 上新建一个 &lt;code&gt;vbs&lt;/code&gt; 文件，路径自定义即可。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gunzip *.synctex.gz
+sed -i &amp;#34;s/\/home\/spirit\/LaTexSpace\//\\\\\\\\wsl$\\\\Ubuntu-24.04\\\\home\\\\spirit\\\\LaTexSpace\\\\/g&amp;#34; *.synctex
+gzip *.synctex&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在 Windows 上新建一个 &lt;code&gt;vbs&lt;/code&gt; 文件，路径自定义即可。&lt;/p&gt;
 &lt;p&gt;注意修改为自己的 wsl 发行版名称和 VSCode 路径。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;span class="lnt"&gt;6
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Set args = WScript.Arguments
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;arg = &amp;#34;&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;For Each s In args
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;arg = arg &amp;amp; &amp;#34; &amp;#34; &amp;amp; s
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Next
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;WScript.CreateObject(&amp;#34;WScript.Shell&amp;#34;).Run &amp;#34;wsl -d Ubuntu-24.04 &amp;#39;/mnt/d/Program Files/Microsoft VS Code/bin/code&amp;#39; &amp;#34; &amp;amp; arg, 0
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;在 SumatraPDF 的设置-选项中填写反向查找命令，注意微调。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;wscript &lt;span class="s2"&gt;&amp;#34;D:\Code\LaTex\Inverse Search.vbs&amp;#34;&lt;/span&gt; -r -g &lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;wslpath &lt;span class="s1"&gt;&amp;#39;%f:%l&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;|&amp;#34;&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/\/mnt\/d\/wsl$\/Ubuntu-24.04//g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id="latexindent-格式化-tex-文档"&gt;latexindent 格式化 tex 文档
+&lt;pre&gt;&lt;code&gt;Set args = WScript.Arguments
+arg = &amp;#34;&amp;#34;
+For Each s In args
+arg = arg &amp;amp; &amp;#34; &amp;#34; &amp;amp; s
+Next
+WScript.CreateObject(&amp;#34;WScript.Shell&amp;#34;).Run &amp;#34;wsl -d Ubuntu-24.04 &amp;#39;/mnt/d/Program Files/Microsoft VS Code/bin/code&amp;#39; &amp;#34; &amp;amp; arg, 0&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在 SumatraPDF 的设置-选项中填写反向查找命令，注意微调。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wscript &amp;#34;D:\Code\LaTex\Inverse Search.vbs&amp;#34; -r -g $(echo $(wslpath &amp;#39;%f:%l&amp;#39;) &amp;#34;|&amp;#34; sed &amp;#39;s/\/mnt\/d\/wsl$\/Ubuntu-24.04//g&amp;#39;)&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="latexindent-格式化-tex-文档"&gt;&lt;span&gt;latexindent 格式化 tex 文档&lt;/span&gt;
+ &lt;a href="#latexindent-%e6%a0%bc%e5%bc%8f%e5%8c%96-tex-%e6%96%87%e6%a1%a3" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
 &lt;/h3&gt;&lt;p&gt;&lt;font color=red&gt;&lt;strong&gt;真没必要搞这个，费劲还没用&lt;/strong&gt;&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;在 &lt;code&gt;settings.json&lt;/code&gt; 中添加如下内容：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;latex-workshop.formatting.latex&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;latexindent&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;// 修改为自己的 TeXLive 路径
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;latex-workshop.formatting.latexindent.path&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;/usr/local/texlive/2024/bin/x86_64-linux/latexindent&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;latexindent 是一个 perl 脚本。要使用它需要安装依赖：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cpan Log::Log4perl
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cpan Log::Dispatch
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cpan YAML::Tiny
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cpan File::HomeDir
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cpan Unicode::GCString
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id="原生linux中配置okular作为外部查看器"&gt;原生Linux中配置Okular作为外部查看器
+&lt;pre&gt;&lt;code&gt;{
+ &amp;#34;latex-workshop.formatting.latex&amp;#34;: &amp;#34;latexindent&amp;#34;,
+ // 修改为自己的 TeXLive 路径
+ &amp;#34;latex-workshop.formatting.latexindent.path&amp;#34;: &amp;#34;/usr/local/texlive/2024/bin/x86_64-linux/latexindent&amp;#34;
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;latexindent 是一个 perl 脚本。要使用它需要安装依赖：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo cpan Log::Log4perl
+sudo cpan Log::Dispatch
+sudo cpan YAML::Tiny
+sudo cpan File::HomeDir
+sudo cpan Unicode::GCString&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="原生linux中配置okular作为外部查看器"&gt;&lt;span&gt;原生Linux中配置Okular作为外部查看器&lt;/span&gt;
+ &lt;a href="#%e5%8e%9f%e7%94%9flinux%e4%b8%ad%e9%85%8d%e7%bd%aeokular%e4%bd%9c%e4%b8%ba%e5%a4%96%e9%83%a8%e6%9f%a5%e7%9c%8b%e5%99%a8" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;安装Okular&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install okular
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Okular设置&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt install okular&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Okular设置&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;设置 -&amp;gt; 配置Okular -&amp;gt; 常规 -&amp;gt; 程序功能 -&amp;gt; 勾选“在标签页中打开新的文档”&lt;/p&gt;
 &lt;p&gt;设置 -&amp;gt; 配置Okular -&amp;gt; 编辑器 -&amp;gt; 编辑器选择自定义文本编辑器，命令为 &lt;code&gt;code --goto %f:%l&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;settings.json 配置&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
-&lt;/span&gt;&lt;span class="lnt"&gt; 2
-&lt;/span&gt;&lt;span class="lnt"&gt; 3
-&lt;/span&gt;&lt;span class="lnt"&gt; 4
-&lt;/span&gt;&lt;span class="lnt"&gt; 5
-&lt;/span&gt;&lt;span class="lnt"&gt; 6
-&lt;/span&gt;&lt;span class="lnt"&gt; 7
-&lt;/span&gt;&lt;span class="lnt"&gt; 8
-&lt;/span&gt;&lt;span class="lnt"&gt; 9
-&lt;/span&gt;&lt;span class="lnt"&gt;10
-&lt;/span&gt;&lt;span class="lnt"&gt;11
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;latex-workshop.view.pdf.viewer&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;external&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;latex-workshop.view.pdf.external.viewer.command&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;okular&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;latex-workshop.view.pdf.external.viewer.args&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;--unique&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;%PDF%&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;latex-workshop.view.pdf.external.synctex.command&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;okular&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;&amp;#34;latex-workshop.view.pdf.external.synctex.args&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;--unique&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;%PDF%#src:%LINE%%TEX%&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;font color=red&gt;&lt;strong&gt;Okular的反向查找需要按住shift再单击鼠标左键&lt;/strong&gt;&lt;/font&gt;&lt;/p&gt;
-&lt;h2 id="踩坑"&gt;踩坑
-&lt;/h2&gt;&lt;h3 id="xxxsty-not-found"&gt;&amp;lsquo;xxx.sty&amp;rsquo; not found
+&lt;pre&gt;&lt;code&gt;{
+ &amp;#34;latex-workshop.view.pdf.viewer&amp;#34;: &amp;#34;external&amp;#34;,
+ &amp;#34;latex-workshop.view.pdf.external.viewer.command&amp;#34;: &amp;#34;okular&amp;#34;,
+ &amp;#34;latex-workshop.view.pdf.external.viewer.args&amp;#34;: [
+ &amp;#34;--unique&amp;#34;,
+ &amp;#34;%PDF%&amp;#34;
+ ],
+ &amp;#34;latex-workshop.view.pdf.external.synctex.command&amp;#34;: &amp;#34;okular&amp;#34;,
+ &amp;#34;latex-workshop.view.pdf.external.synctex.args&amp;#34;: [
+ &amp;#34;--unique&amp;#34;,
+ &amp;#34;%PDF%#src:%LINE%%TEX%&amp;#34;
+ ],
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;font color=red&gt;&lt;strong&gt;Okular的反向查找需要按住shift再单击鼠标左键&lt;/strong&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;h2 class="heading-element" id="踩坑"&gt;&lt;span&gt;踩坑&lt;/span&gt;
+ &lt;a href="#%e8%b8%a9%e5%9d%91" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="xxxsty-not-found"&gt;&lt;span&gt;&amp;lsquo;xxx.sty&amp;rsquo; not found&lt;/span&gt;
+ &lt;a href="#xxxsty-not-found" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
 &lt;/h3&gt;&lt;p&gt;缺啥装啥就行。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo tlmgr install xxx
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id="sudo-执行-tlmgrcommand-not-found"&gt;sudo 执行 tlmgr，command not found
+&lt;pre&gt;&lt;code&gt;sudo tlmgr install xxx&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="sudo-执行-tlmgrcommand-not-found"&gt;&lt;span&gt;sudo 执行 tlmgr，command not found&lt;/span&gt;
+ &lt;a href="#sudo-%e6%89%a7%e8%a1%8c-tlmgrcommand-not-found" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
 &lt;/h3&gt;&lt;p&gt;因为 sudo 并不使用用户的环境变量，也不调用shell执行命令。故你折腾 &lt;code&gt;~/.bashrc&lt;/code&gt; &lt;code&gt;/etc/profile&lt;/code&gt; 什么的都是没用的。&lt;/p&gt;
 &lt;p&gt;可以在命令中指定环境变量：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo env &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$PATH&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt; tlmgr install package
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;但是这样做好麻烦，在 &lt;code&gt;~/.bashrc&lt;/code&gt; 中用 &lt;code&gt;alias&lt;/code&gt; 简化一下吧：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;psudo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sudo env PATH=&amp;#34;$PATH&amp;#34;&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;这样用 &lt;code&gt;psudo&lt;/code&gt; 代替 &lt;code&gt;sudo&lt;/code&gt; 就是使用当前终端的环境变量了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo env PATH=&amp;#34;$PATH&amp;#34; tlmgr install package&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但是这样做好麻烦，在 &lt;code&gt;~/.bashrc&lt;/code&gt; 中用 &lt;code&gt;alias&lt;/code&gt; 简化一下吧：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;alias psudo=&amp;#39;sudo env PATH=&amp;#34;$PATH&amp;#34;&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样用 &lt;code&gt;psudo&lt;/code&gt; 代替 &lt;code&gt;sudo&lt;/code&gt; 就是使用当前终端的环境变量了。&lt;/p&gt;
 &lt;p&gt;还有一种强制 sudo 在 shell 中执行命令的办法，对应内容如下：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo sh -l -c tlmgr install package
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;shsudo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sudo sh -l -c&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id="编译一个-beamer-模板莫名失败"&gt;编译一个 Beamer 模板莫名失败
+&lt;pre&gt;&lt;code&gt;sudo sh -l -c tlmgr install package
+alias shsudo=&amp;#39;sudo sh -l -c&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="编译一个-beamer-模板莫名失败"&gt;&lt;span&gt;编译一个 Beamer 模板莫名失败&lt;/span&gt;
+ &lt;a href="#%e7%bc%96%e8%af%91%e4%b8%80%e4%b8%aa-beamer-%e6%a8%a1%e6%9d%bf%e8%8e%ab%e5%90%8d%e5%a4%b1%e8%b4%a5" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
 &lt;/h3&gt;&lt;p&gt;缺包导致的，TeXLive 镜像默认不带这些东西吗？&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install latex-cjk-all texlive-lang-chinese texlive-lang-english
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;如果最开始用 &lt;code&gt;sudo apt install texlive-full&lt;/code&gt; 安装环境似乎没有这个问题，但我没试。感兴趣的可以在新的系统上试试，坏处就是仓库里的是什么版本你就只能用什么版本。&lt;/p&gt;
-&lt;h3 id="复制-windows-字体到-wsl"&gt;复制 Windows 字体到 WSL
-&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;span class="lnt"&gt;6
-&lt;/span&gt;&lt;span class="lnt"&gt;7
-&lt;/span&gt;&lt;span class="lnt"&gt;8
-&lt;/span&gt;&lt;span class="lnt"&gt;9
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo mkdir /usr/share/fonts/windows_fonts
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; /usr/share/fonts/windows_fonts
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cp /mnt/c/Windows/Fonts/*.ttf ./
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cp /mnt/c/Windows/Fonts/*.TTF ./
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cp /mnt/c/Windows/Fonts/*.otf ./
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cp /mnt/c/Windows/Fonts/simsun.ttc ./
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo mkfontscale
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo mkfontdir
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;fc-cache -fv
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;font color=red&gt;&lt;strong&gt;好消息&lt;/strong&gt;&lt;/font&gt;：如果你能使用 deb 包，就不需要上面这个用处不大的东西了。&lt;/p&gt;
-&lt;p&gt;可以直接安装&lt;a class="link" href="https://pan.baidu.com/s/1J7Q4Fyhnjgg58c_rfjHYdA?pwd=yfsb" target="_blank" rel="noopener"
-&gt;Linux字体包（百度网盘，提取码yfsb）&lt;/a&gt;。非常全面的同时操作还简单。&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://pan.quark.cn/s/a2d2868c8bd5" target="_blank" rel="noopener"
-&gt;LinuxFont（夸克网盘，提取码ks4L）&lt;/a&gt; 。&lt;/p&gt;
-&lt;h3 id="perl-依赖装不上"&gt;perl 依赖装不上
+&lt;pre&gt;&lt;code&gt;sudo apt install latex-cjk-all texlive-lang-chinese texlive-lang-english&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果最开始用 &lt;code&gt;sudo apt install texlive-full&lt;/code&gt; 安装环境似乎没有这个问题，但我没试。感兴趣的可以在新的系统上试试，坏处就是仓库里的是什么版本你就只能用什么版本。&lt;/p&gt;
+&lt;h3 class="heading-element" id="复制-windows-字体到-wsl"&gt;&lt;span&gt;复制 Windows 字体到 WSL&lt;/span&gt;
+ &lt;a href="#%e5%a4%8d%e5%88%b6-windows-%e5%ad%97%e4%bd%93%e5%88%b0-wsl" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;sudo mkdir /usr/share/fonts/windows_fonts
+cd /usr/share/fonts/windows_fonts
+sudo cp /mnt/c/Windows/Fonts/*.ttf ./
+sudo cp /mnt/c/Windows/Fonts/*.TTF ./
+sudo cp /mnt/c/Windows/Fonts/*.otf ./
+sudo cp /mnt/c/Windows/Fonts/simsun.ttc ./
+sudo mkfontscale
+sudo mkfontdir
+fc-cache -fv&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;font color=red&gt;&lt;strong&gt;好消息&lt;/strong&gt;&lt;/font&gt;：如果你能使用 deb 包，就不需要上面这个用处不大的东西了。&lt;/p&gt;
+&lt;p&gt;可以直接安装&lt;a href="https://pan.baidu.com/s/1J7Q4Fyhnjgg58c_rfjHYdA?pwd=yfsb" target="_blank" rel="external nofollow noopener noreferrer"&gt;Linux字体包（百度网盘，提取码yfsb）&lt;/a&gt;。非常全面的同时操作还简单。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://pan.quark.cn/s/a2d2868c8bd5" target="_blank" rel="external nofollow noopener noreferrer"&gt;LinuxFont（夸克网盘，提取码ks4L）&lt;/a&gt; 。&lt;/p&gt;
+&lt;h3 class="heading-element" id="perl-依赖装不上"&gt;&lt;span&gt;perl 依赖装不上&lt;/span&gt;
+ &lt;a href="#perl-%e4%be%9d%e8%b5%96%e8%a3%85%e4%b8%8d%e4%b8%8a" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
 &lt;/h3&gt;&lt;p&gt;需要先安装一些工具：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 事到如今我也不知道哪个有用了，都tm装上得了&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install gcc g++ gcc-multilib g++-multilib make cmake build-essential libperl-dev build-essential libperl-dev
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;这样还会有一个依赖 Log::Dispatch 装不上。顺着报错的依赖一路追到上游然后手动编译安装就好了：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;span class="lnt"&gt;6
-&lt;/span&gt;&lt;span class="lnt"&gt;7
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;wget https://www.cpan.org/modules/by-module/Devel/Module-Pluggable-6.2.tar.gz
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gzip -dc Module-Pluggable-6.2.tar.gz &lt;span class="p"&gt;|&lt;/span&gt; tar xf -
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; Module-Pluggable-6.2
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;perl Makefile.PL
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;make
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;make &lt;span class="nb"&gt;test&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo make install
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;然后顺着这一串报错的依赖再装回来：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; sudo cpan Test2::Plugin::NoWarnings
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; sudo cpan Params::ValidationCompiler
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;# 说不定直接跑这个就行了？试试？&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; sudo cpan Log::Dispatch
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;然后这 byd latexindent 就终于能用了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 事到如今我也不知道哪个有用了，都tm装上得了
+sudo apt install gcc g&amp;#43;&amp;#43; gcc-multilib g&amp;#43;&amp;#43;-multilib make cmake build-essential libperl-dev build-essential libperl-dev &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样还会有一个依赖 Log::Dispatch 装不上。顺着报错的依赖一路追到上游然后手动编译安装就好了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://www.cpan.org/modules/by-module/Devel/Module-Pluggable-6.2.tar.gz
+gzip -dc Module-Pluggable-6.2.tar.gz | tar xf -
+cd Module-Pluggable-6.2
+perl Makefile.PL
+make
+make test 
+sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后顺着这一串报错的依赖再装回来：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; sudo cpan Test2::Plugin::NoWarnings
+ sudo cpan Params::ValidationCompiler
+ # 说不定直接跑这个就行了？试试？
+ sudo cpan Log::Dispatch&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后这 byd latexindent 就终于能用了。&lt;/p&gt;
 &lt;p&gt;说实话我现在感觉手写的 tex 挺好看的，没事别瞎折腾（能跑就行&lt;/p&gt;
-&lt;h2 id="ref"&gt;ref
-&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://blog.mstg.top/archives/997" target="_blank" rel="noopener"
-&gt;WSL2 虚拟机 其他盘安装(非C盘)及调试(含填坑)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://www.cnblogs.com/eslzzyl/p/17358405.html" target="_blank" rel="noopener"
-&gt;TeX Live 2024 安装教程（Windows/WSL/Linux）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://tex.stackexchange.com/questions/187073/permission-problem-when-installing-package-from-tlmgr" target="_blank" rel="noopener"
-&gt;Permission problem when installing package from tlmgr&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://askubuntu.com/questions/66498/setting-tex-live-path-for-root" target="_blank" rel="noopener"
-&gt;Setting TeX Live path for root&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://groups.google.com/g/comp.lang.perl.modules/c/8ww36CFWRw0" target="_blank" rel="noopener"
-&gt;CPAN general build error (or fail during &amp;ldquo;install Module::ScanDeps&amp;rdquo;)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://github.com/hilinxinhui/VSCode_LaTeX_configuration?tab=readme-ov-file" target="_blank" rel="noopener"
-&gt;hilinxinhui/VSCode_LaTeX_configuration&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://blog.csdn.net/lyh458/article/details/125930154" target="_blank" rel="noopener"
-&gt;ubuntu下vscode LaTeX文档格式化&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://github.com/shinyypig/latex-vscode-config" target="_blank" rel="noopener"
-&gt;shinyypig/latex-vscode-config&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://blog.csdn.net/weixin_42694350/article/details/123320383" target="_blank" rel="noopener"
-&gt;基于WSL-LaTeX的VS Code+SumatraPDF协作&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://zhuanlan.zhihu.com/p/337459645" target="_blank" rel="noopener"
-&gt;WSL下LaTeX的VS Code+SumatraPDF协作&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://zhuanlan.zhihu.com/p/112108701" target="_blank" rel="noopener"
-&gt;VS Code的LaTeX配置&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://zhuanlan.zhihu.com/p/374491983" target="_blank" rel="noopener"
-&gt;LaTeX配置安装大对比：TeXLive/MiKTeX、Windows/WSL、xelatex/lualatex/pdflatex编译器的速度性能详细对比&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="link" href="https://zhuanlan.zhihu.com/p/492965557" target="_blank" rel="noopener"
-&gt;Ubuntu 20.04 系统环境下配置LaTeX环境（正反向搜索）&lt;/a&gt;&lt;/p&gt;</description></item><item><title>归档</title><link>https://rxzcloud.top/archives/</link><pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate><guid>https://rxzcloud.top/archives/</guid><description/></item><item><title>关于</title><link>https://rxzcloud.top/%E5%85%B3%E4%BA%8E/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://rxzcloud.top/%E5%85%B3%E4%BA%8E/</guid><description>&lt;p&gt;卧槽，我怎么玉玉了&lt;/p&gt;</description></item><item><title>链接</title><link>https://rxzcloud.top/%E9%93%BE%E6%8E%A5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://rxzcloud.top/%E9%93%BE%E6%8E%A5/</guid><description>&lt;p&gt;To use this feature, add &lt;code&gt;links&lt;/code&gt; section to frontmatter.&lt;/p&gt;
-&lt;p&gt;This page&amp;rsquo;s frontmatter:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;span class="lnt"&gt;6
-&lt;/span&gt;&lt;span class="lnt"&gt;7
-&lt;/span&gt;&lt;span class="lnt"&gt;8
-&lt;/span&gt;&lt;span class="lnt"&gt;9
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;links&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;GitHub&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;GitHub is the world&amp;#39;s largest software development platform.&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;website&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;https://github.com&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;image&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;TypeScript&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;website&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;https://www.typescriptlang.org&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;image&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;ts-logo-128.jpg&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;code&gt;image&lt;/code&gt; field accepts both local and external images.&lt;/p&gt;</description></item><item><title>搜索</title><link>https://rxzcloud.top/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://rxzcloud.top/search/</guid><description/></item></channel></rss>
+&lt;h2 class="heading-element" id="ref"&gt;&lt;span&gt;ref&lt;/span&gt;
+ &lt;a href="#ref" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;a href="https://blog.mstg.top/archives/997" target="_blank" rel="external nofollow noopener noreferrer"&gt;WSL2 虚拟机 其他盘安装(非C盘)及调试(含填坑)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.cnblogs.com/eslzzyl/p/17358405.html" target="_blank" rel="external nofollow noopener noreferrer"&gt;TeX Live 2024 安装教程（Windows/WSL/Linux）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://tex.stackexchange.com/questions/187073/permission-problem-when-installing-package-from-tlmgr" target="_blank" rel="external nofollow noopener noreferrer"&gt;Permission problem when installing package from tlmgr&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://askubuntu.com/questions/66498/setting-tex-live-path-for-root" target="_blank" rel="external nofollow noopener noreferrer"&gt;Setting TeX Live path for root&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://groups.google.com/g/comp.lang.perl.modules/c/8ww36CFWRw0" target="_blank" rel="external nofollow noopener noreferrer"&gt;CPAN general build error (or fail during &amp;ldquo;install Module::ScanDeps&amp;rdquo;)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/hilinxinhui/VSCode_LaTeX_configuration?tab=readme-ov-file" target="_blank" rel="external nofollow noopener noreferrer"&gt;hilinxinhui/VSCode_LaTeX_configuration&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.csdn.net/lyh458/article/details/125930154" target="_blank" rel="external nofollow noopener noreferrer"&gt;ubuntu下vscode LaTeX文档格式化&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/shinyypig/latex-vscode-config" target="_blank" rel="external nofollow noopener noreferrer"&gt;shinyypig/latex-vscode-config&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.csdn.net/weixin_42694350/article/details/123320383" target="_blank" rel="external nofollow noopener noreferrer"&gt;基于WSL-LaTeX的VS Code+SumatraPDF协作&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://zhuanlan.zhihu.com/p/337459645" target="_blank" rel="external nofollow noopener noreferrer"&gt;WSL下LaTeX的VS Code+SumatraPDF协作&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://zhuanlan.zhihu.com/p/112108701" target="_blank" rel="external nofollow noopener noreferrer"&gt;VS Code的LaTeX配置&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://zhuanlan.zhihu.com/p/374491983" target="_blank" rel="external nofollow noopener noreferrer"&gt;LaTeX配置安装大对比：TeXLive/MiKTeX、Windows/WSL、xelatex/lualatex/pdflatex编译器的速度性能详细对比&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://zhuanlan.zhihu.com/p/492965557" target="_blank" rel="external nofollow noopener noreferrer"&gt;Ubuntu 20.04 系统环境下配置LaTeX环境（正反向搜索）&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>
