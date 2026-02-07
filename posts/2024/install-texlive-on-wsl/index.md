@@ -266,6 +266,46 @@ sudo apt install okular
 
 <font color=red>**Okular的反向查找需要按住shift再单击鼠标左键**</font>
 
+
+### mac 配置 skim 作为外部查看器
+
+**使用 brew 安装 skim**
+
+```shell
+brew install --cask skim
+```
+
+**配置settings.json**
+
+```json
+{
+    "latex-workshop.view.pdf.viewer": "external",
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.view.pdf.external.synctex.command": "/Applications/Skim.app/Contents/SharedSupport/displayline",
+    "latex-workshop.view.pdf.external.synctex.args": [
+        "-r",
+        "%LINE%",
+        "%PDF%",
+        "%TEX%"
+    ],
+    "latex-workshop.view.pdf.external.viewer.command": "/Applications/Skim.app/Contents/SharedSupport/displayline",
+    "latex-workshop.view.pdf.external.viewer.args": [
+        "0",
+        "%PDF%",
+    ],
+}
+```
+
+**Skim设置**
+
+菜单栏 -> Skim -> 选项 -> 勾选检查文件变化和自动重新加载。
+
+pdf-tex 同步支持的预设修改为 Visual Studio Code。
+
+正向查找：`option + command + j`
+
+反向查找：`command + shift + click`
+
 ## 踩坑
 
 ### 'xxx.sty' not found

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Spirit的博客</title><link>https://rxzcloud.top/</link><description>Spirit的博客</description><generator>Hugo 0.155.0 &amp; FixIt v0.4.3-20260123080729-2a5bd268</generator><language>zh-CN</language><managingEditor>spirit1230@qq.com (Spirit)</managingEditor><webMaster>spirit1230@qq.com (Spirit)</webMaster><copyright>Spirit</copyright><lastBuildDate>Thu, 29 Jan 2026 12:53:29 +0000</lastBuildDate><atom:link href="https://rxzcloud.top/index.xml" rel="self" type="application/rss+xml"/><item><title>Anki同步服务器搭建</title><link>https://rxzcloud.top/posts/cloud-server/anki-sync-server/</link><pubDate>Tue, 25 Feb 2025 20:49:46 +0800</pubDate><author>spirit1230@qq.com (Spirit)</author><guid>https://rxzcloud.top/posts/cloud-server/anki-sync-server/</guid><category domain="https://rxzcloud.top/categories/cloud-service/">Cloud Service</category><description>&lt;h2 class="heading-element" id="新服务器配置"&gt;&lt;span&gt;新服务器配置&lt;/span&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Spirit的博客</title><link>https://rxzcloud.top/</link><description>Spirit的博客</description><generator>Hugo 0.155.2 &amp; FixIt v0.4.3-20260123080729-2a5bd268</generator><language>zh-CN</language><managingEditor>spirit1230@qq.com (Spirit)</managingEditor><webMaster>spirit1230@qq.com (Spirit)</webMaster><copyright>Spirit</copyright><lastBuildDate>Sat, 07 Feb 2026 06:01:50 +0000</lastBuildDate><atom:link href="https://rxzcloud.top/index.xml" rel="self" type="application/rss+xml"/><item><title>Anki同步服务器搭建</title><link>https://rxzcloud.top/posts/cloud-server/anki-sync-server/</link><pubDate>Tue, 25 Feb 2025 20:49:46 +0800</pubDate><author>spirit1230@qq.com (Spirit)</author><guid>https://rxzcloud.top/posts/cloud-server/anki-sync-server/</guid><category domain="https://rxzcloud.top/categories/cloud-service/">Cloud Service</category><description>&lt;h2 class="heading-element" id="新服务器配置"&gt;&lt;span&gt;新服务器配置&lt;/span&gt;
  &lt;a href="#%e6%96%b0%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%85%8d%e7%bd%ae" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
@@ -302,6 +302,32 @@ sudo cpan Unicode::GCString&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-elemen
  &amp;#34;%PDF%#src:%LINE%%TEX%&amp;#34;
  ],
 }&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;font color=red&gt;&lt;strong&gt;Okular的反向查找需要按住shift再单击鼠标左键&lt;/strong&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;h3 class="heading-element" id="mac-配置-skim-作为外部查看器"&gt;&lt;span&gt;mac 配置 skim 作为外部查看器&lt;/span&gt;
+ &lt;a href="#mac-%e9%85%8d%e7%bd%ae-skim-%e4%bd%9c%e4%b8%ba%e5%a4%96%e9%83%a8%e6%9f%a5%e7%9c%8b%e5%99%a8" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;使用 brew 安装 skim&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;brew install --cask skim&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;配置settings.json&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+ &amp;#34;latex-workshop.view.pdf.viewer&amp;#34;: &amp;#34;external&amp;#34;,
+ &amp;#34;latex-workshop.latex.autoBuild.run&amp;#34;: &amp;#34;never&amp;#34;,
+ &amp;#34;latex-workshop.view.pdf.external.synctex.command&amp;#34;: &amp;#34;/Applications/Skim.app/Contents/SharedSupport/displayline&amp;#34;,
+ &amp;#34;latex-workshop.view.pdf.external.synctex.args&amp;#34;: [
+ &amp;#34;-r&amp;#34;,
+ &amp;#34;%LINE%&amp;#34;,
+ &amp;#34;%PDF%&amp;#34;,
+ &amp;#34;%TEX%&amp;#34;
+ ],
+ &amp;#34;latex-workshop.view.pdf.external.viewer.command&amp;#34;: &amp;#34;/Applications/Skim.app/Contents/SharedSupport/displayline&amp;#34;,
+ &amp;#34;latex-workshop.view.pdf.external.viewer.args&amp;#34;: [
+ &amp;#34;0&amp;#34;,
+ &amp;#34;%PDF%&amp;#34;,
+ ],
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Skim设置&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;菜单栏 -&amp;gt; Skim -&amp;gt; 选项 -&amp;gt; 勾选检查文件变化和自动重新加载。&lt;/p&gt;
+&lt;p&gt;pdf-tex 同步支持的预设修改为 Visual Studio Code。&lt;/p&gt;
+&lt;p&gt;正向查找：&lt;code&gt;option + command + j&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;反向查找：&lt;code&gt;command + shift + click&lt;/code&gt;&lt;/p&gt;
 &lt;h2 class="heading-element" id="踩坑"&gt;&lt;span&gt;踩坑&lt;/span&gt;
  &lt;a href="#%e8%b8%a9%e5%9d%91" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
