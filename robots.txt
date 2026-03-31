@@ -97,4 +97,4 @@ Disallow: /
 User-agent: ClaudeBot
 Disallow: /
 
-Sitemap: https://www.rxzcloud.top/sitemap.xml
+Sitemap: https://rxzcloud.top/sitemap.xml

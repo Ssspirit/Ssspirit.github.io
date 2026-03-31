@@ -168,5 +168,5 @@ docker restart CONTAINER
 ---
 
 > 作者: [Spirit](https://github.com/Ssspirit)  
-> URL: https://www.rxzcloud.top/posts/cloud-server/anki-sync-server/  
+> URL: https://rxzcloud.top/posts/cloud-server/anki-sync-server/  
 

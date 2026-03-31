@@ -7,5 +7,5 @@
 ---
 
 > 作者: [Spirit](https://github.com/Ssspirit)  
-> URL: https://www.rxzcloud.top/about/  
+> URL: https://rxzcloud.top/about/  
 
