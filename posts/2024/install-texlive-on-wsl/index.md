@@ -437,5 +437,5 @@ sudo make install
 ---
 
 > 作者: [Spirit](https://github.com/Ssspirit)  
-> URL: https://rxzcloud.top/posts/2024/install-texlive-on-wsl/  
+> URL: https://www.rxzcloud.top/posts/2024/install-texlive-on-wsl/  
 

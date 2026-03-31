@@ -12,5 +12,5 @@
 ---
 
 > 作者: [Spirit](https://github.com/Ssspirit)  
-> URL: https://rxzcloud.top/friends/  
+> URL: https://www.rxzcloud.top/friends/  
 
